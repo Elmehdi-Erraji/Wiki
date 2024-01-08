@@ -71,7 +71,7 @@
                             <div class="profile-user-box">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="profile-user-img"><img src="/Brief-10-ImmoConnect/app/routes/<?php echo $user->getImage(); ?>" alt="" class="avatar-lg rounded-circle"></div>
+                                        <div class="profile-user-img"><img src="/wiki/app/routes/<?php echo $user->getImage(); ?>" alt="" class="avatar-lg rounded-circle"></div>
                                         <div class="">
                                             <h4 class="mt-4 fs-17 ellipsis"><?php echo $user->getUsername(); ?></h4>
                                             <?php
@@ -159,9 +159,6 @@
                                                             event.preventDefault(); // Prevent form submission for now
                                                             let username = document.getElementById('FullName').value.trim();
                                                             let email = document.getElementById('Email').value.trim();
-                                                            let password = document.getElementById('Password').value.trim();
-                                                            let rePassword = document.getElementById('RePassword').value.trim();
-                                                            let phone = document.getElementById('phone').value.trim();
                                                             let fileInput = document.getElementById('file');
                                                             let valid = true;
 
@@ -181,37 +178,7 @@
                                                             }
 
                                                             // Check if passwords are provided and match
-                                                            if (password === '') {
-                                                                document.getElementById('passwordError').textContent = 'Password is required';
-                                                                valid = false;
-                                                            } else if (password.length < 6 || password.length > 15) {
-                                                                document.getElementById('passwordError').textContent = 'Password must be between 6 and 15 characters';
-                                                                valid = false;
-                                                            } else {
-                                                                document.getElementById('passwordError').textContent = '';
-                                                            }
-
-                                                            if (rePassword === '') {
-                                                                document.getElementById('rePasswordError').textContent = 'Please re-enter your password';
-                                                                valid = false;
-                                                            } else if (rePassword !== password) {
-                                                                document.getElementById('rePasswordError').textContent = 'Passwords do not match';
-                                                                valid = false;
-                                                            } else {
-                                                                document.getElementById('rePasswordError').textContent = '';
-                                                            }
-
-                                                            // Phone number validation
-                                                            if (phone === '') {
-                                                                document.getElementById('phoneError').textContent = 'Phone number is required';
-                                                                valid = false;
-                                                            } else if (!/^\d{6,15}$/.test(phone)) {
-                                                                document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
-                                                                valid = false;
-                                                            } else {
-                                                                document.getElementById('phoneError').textContent = '';
-                                                            }
-
+                    
                                                             // Add validation for file upload (image) if provided
                                                             if (fileInput.value.trim() !== '') {
                                                                 if (fileInput.accept.includes(fileInput.files[0].type)) {

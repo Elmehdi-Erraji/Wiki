@@ -63,14 +63,17 @@ if (isset($_SESSION['role_id'])) {
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
-                <i class="ri-pencil-ruler-2-line"></i>
-                <span> Announces </span>
+            <i class="ri-pages-line"></i>
+                <span> Wiki's </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarServices">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="reservations-list.php">Announces List</a>
+                        <a href="wiki-list.php">Wiki's List</a>
+                    </li>
+                    <li>
+                        <a href="wiki-add.php">Wiki's Add</a>
                     </li>
                 </ul>
             </div>

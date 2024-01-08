@@ -18,6 +18,7 @@ $router->setRoutes([
         'Delete'=>['RoutesController' , 'userDelete'],
         'Update'=>['RoutesController' , 'Update'],
         'logout'=>['UserController' , 'logout'],
+        'fetchUsers'=>['UserController' , 'fetchUsers'],
 
     ],
     'POST'=>[
@@ -25,6 +26,7 @@ $router->setRoutes([
         'register'=> ['UserController','register'],
         'addUser'=>['UserController' , 'addUser'],
         'updateUser'=>['UserController' , 'updateUser'],
+        'updateProfile'=>['UserController' , 'updateProfile'],
     ]
 ]);
 if (isset($_GET['url'])) {

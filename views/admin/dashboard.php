@@ -162,7 +162,7 @@ unset($_SESSION['updateUserErrors']); // Clear the errors after displaying them
                                                         <th>ID</th>
                                                         <th>Username</th>
                                                         <th>E-mail</th>
-                                                        <th>Phone</th>
+                                                        
                                                         <th>Status</th>
                                                         <th>Role</th>
                                                         <th>Actions</th>
@@ -241,7 +241,6 @@ unset($_SESSION['updateUserErrors']); // Clear the errors after displaying them
                                             <td>${row.id}</td>
                                             <td>${row.username}</td>
                                             <td>${row.email}</td>
-                                            <td>${row.phone_number}</td>
                                             <td>${row.status}</td>
                                             <td>${row.role_id}</td>
                                             <td >

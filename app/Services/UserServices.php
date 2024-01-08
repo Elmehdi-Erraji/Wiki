@@ -209,9 +209,7 @@ class UserServices implements UserDAO{
         $userId = $user->getId();
         $username = $user->getUsername();
         $email = $user->getEmail();
-        $password = $user->getPassword(); // Assuming this returns the new password if provided
-        $hashedPassword = !empty($password) ? password_hash($password, PASSWORD_DEFAULT) : null; // Hash the new password if provided
-        
+       
         // Handle image update logic similar to the addUser method
         $image = $user->getImage(); // Get the image path from the User object or set to null if not provided
         
@@ -222,7 +220,7 @@ class UserServices implements UserDAO{
     
         try {
             // Construct the UPDATE query for updating user information
-            $updateUserQuery = "UPDATE users SET username=?, email=?, phone_number=?, password=?, image=? WHERE id=?";
+            $updateUserQuery = "UPDATE users SET username=?, email=?, image=? WHERE id=?";
             $stmtUpdateUser = $connection->prepare($updateUserQuery);
     
             if (!$stmtUpdateUser) {
@@ -230,7 +228,7 @@ class UserServices implements UserDAO{
             }
     
             // Bind parameters and execute the update query
-            $successUpdateUser = $stmtUpdateUser->execute([$username, $email, $hashedPassword, $image, $userId]);
+            $successUpdateUser = $stmtUpdateUser->execute([$username, $email,  $image, $userId]);
     
             if ($successUpdateUser) {
                 $connection->commit();

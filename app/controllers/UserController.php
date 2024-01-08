@@ -270,18 +270,17 @@ public function login() {
         public function updateProfile() {
             $postData = $_POST ?? [];
             
-        
              
                 $userId = $postData['user_id'] ?? '';
                 $username = $postData['username'] ?? '';
                 $email = $postData['email'] ?? '';
-                $password = $postData['password'] ?? '';
+             
                 
                 // Handle image upload
                 $image = $_FILES['user_image'] ?? null;
                 $imagePath = null;
                 if ($image && $image['error'] === UPLOAD_ERR_OK) {
-                    $uploadDirectory = '../../public/assets/images/users/';
+                    $uploadDirectory = '../../public/images/users/';
                     $imageName = basename($image['name']);
                     $uploadedImagePath = $uploadDirectory . $imageName;
                     if (move_uploaded_file($image['tmp_name'], $uploadedImagePath)) {
@@ -298,7 +297,6 @@ public function login() {
                     // Update the user object with the new data
                     $existingUser->setUsername($username);
                     $existingUser->setEmail($email);
-                    $existingUser->setPassword( $password); // Assuming the method exists
                     $existingUser->setImage($imagePath);
                     
                     // Update the user in the database
