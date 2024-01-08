@@ -4,6 +4,12 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 
 use app\Controllers\UserController;
+use app\Controllers\CategoryController;
+
+
+$cat = new CategoryController();
+list($catCount)=$cat->showData();
+
 
 $data = new UserController();
 list($userCount) = $data->showData();
@@ -109,10 +115,10 @@ unset($_SESSION['updateUserErrors']); // Clear the errors after displaying them
                             <div class="card widget-flat text-bg-info">
                                 <div class="card-body">
                                     <div class="float-end">
-                                        <i class="ri-shopping-basket-line widget-icon"></i>
+                                        <i class="ri-file-text-line widget-icon"></i>
                                     </div>
-                                    <h6 class="text-uppercase mt-0" title="Customers">Properties</h6>
-                                    <h2 class="my-2">5</h2>
+                                    <h6 class="text-uppercase mt-0" title="Customers">Wiki's</h6>
+                                    <h2 class="my-2"><?php echo "0"; ?></h2>
 
                                 </div>
                             </div>
@@ -121,10 +127,10 @@ unset($_SESSION['updateUserErrors']); // Clear the errors after displaying them
                             <div class="card widget-flat text-bg-purple">
                                 <div class="card-body">
                                     <div class="float-end">
-                                        <i class="ri-wallet-2-line widget-icon"></i>
+                                        <i class="ri-folder-line widget-icon"></i>
                                     </div>
-                                    <h6 class="text-uppercase mt-0" title="Customers">Reservations</h6>
-                                    <h2 class="my-2">7</h2>
+                                    <h6 class="text-uppercase mt-0" title="Customers">Categories</h6>
+                                    <h2 class="my-2"><?php echo $catCount; ?></h2>
 
                                 </div>
                             </div>

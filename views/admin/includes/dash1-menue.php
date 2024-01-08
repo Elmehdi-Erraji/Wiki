@@ -78,13 +78,14 @@ if (isset($_SESSION['role_id'])) {
                             </ul>
                         </div>
                     </li>
+
                     <li class="side-nav-item">
                         <a href="cat-tag" class="side-nav-link">
                             <i class="ri-questionnaire-line"></i>
                             <span> Tags and Categories </span>
-                            <span class="menu-arrow"></span>
                         </a>
                     </li>
+
                 <?php } ?>
 
 

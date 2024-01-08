@@ -19,12 +19,13 @@ $router->setRoutes([
         'Update'=>['RoutesController' , 'Update'],
         'logout'=>['UserController' , 'logout'],
         'fetchUsers'=>['UserController' , 'fetchUsers'],
-        'wiki-add'=>['RoutesController' , 'wikiAdd'],
         'cat-tag'=>['RoutesController' , 'cat_tag'],
         'tag-add'=>['RoutesController' , 'tagAdd'],
         'category-add'=>['RoutesController' , 'categoryAdd'],
         'Delete-tag'=>['TagController' , 'deleteTag'],
         'Delete-cat'=>['CategoryController' , 'deleteCat'],
+        'wiki-add'=>['RoutesController' , 'wikiAdd'],
+        'wiki-list'=>['RoutesController' , 'wikiList'],
 
     ],
     'POST'=>[

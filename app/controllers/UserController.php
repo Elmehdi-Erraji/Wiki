@@ -201,11 +201,9 @@ public function login() {
     public function showData() {
         $model = new UserServices();
         $userCount = $model->countUsers();
-        
-
         // Include the view file and pass the variables
         return [$userCount];
-        }
+    }
 
 
         public function updateUser() {

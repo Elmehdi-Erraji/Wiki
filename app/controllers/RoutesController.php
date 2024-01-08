@@ -37,10 +37,6 @@ class RoutesController {
        
         include __DIR__ .'../../../views/admin/user-update.php';
     }
-    public function wikiAdd(){
-       
-        include __DIR__ .'../../../views/admin/wiki-add.php';
-    }
     public function cat_tag(){
        
         include __DIR__ .'../../../views/admin/cat-tag-list.php';
@@ -52,6 +48,14 @@ class RoutesController {
     public function categoryAdd(){
        
         include __DIR__ .'../../../views/admin/category-add.php';
+    }
+    public function wikiAdd(){
+       
+        include __DIR__ .'../../../views/admin/wiki-add.php';
+    }
+    public function wikiList(){
+       
+        include __DIR__ .'../../../views/admin/wiki-list.php';
     }
    
 }
