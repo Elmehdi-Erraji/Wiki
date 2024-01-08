@@ -76,4 +76,22 @@ class CategoryServices {
     
         return $Categories ;
     }
+
+
+    public function updateCategory($catId,$catName){
+
+        $categoryId = $catId;
+        $categoryName = $catName;
+
+        $query = "UPDATE category SET categoryName=? WHERE id=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$categoryName,$categoryId]);
+
+        if($stmt) {
+            return true;
+        }else {
+            return false;
+        }
+
+    }
 }

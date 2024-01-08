@@ -63,4 +63,24 @@ class CategoryController{
         $Categories = CategoryServices::getAllCategories();
         return $Categories;
     }
+
+
+
+    public function updateCategory(){
+        $postData = $_POST ;
+        
+        $catId = $postData['categoryId'];
+        $catName = $postData['CategoryName'];
+
+        $catService = new CategoryServices();
+
+        $result = $catService->updateCategory($catId,$catName);
+
+        if($result){
+            header('location: cat-tag');
+        }else {
+            echo 'Update faild';
+        }
+
+    }
 }

@@ -16,7 +16,6 @@ $router->setRoutes([
         'user-list'=>['RoutesController' , 'userList'],
         'profile'=>['RoutesController' , 'profile'],
         'Delete'=>['UserController' , 'userDelete'],
-        
         'Update'=>['RoutesController' , 'Update'],
         'logout'=>['UserController' , 'logout'],
         'fetchUsers'=>['UserController' , 'fetchUsers'],
@@ -36,6 +35,7 @@ $router->setRoutes([
         'updateProfile'=>['UserController' , 'updateProfile'],
         'addTag'=>['TagController' , 'addTag'],
         'addCategory'=>['CategoryController' , 'addCategory'],
+        'updateCategory'=>['CategoryController' , 'updateCategory'],
     ]
 ]);
 if (isset($_GET['url'])) {

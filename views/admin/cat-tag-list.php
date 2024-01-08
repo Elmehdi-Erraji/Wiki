@@ -159,11 +159,9 @@ $categoris = $categoryController->getAllCategories();
                                                             <td><?php echo $category->getId(); ?></td>
                                                             <td><?php echo $category->getcategoryName(); ?></td>
 
-
-
                                                             <td>
                                                                 <a href="Delete-cat?cat_id=<?php echo $category->getId(); ?>" class="btn btn-danger">Delete</a>
-                                                                <a href="Update-cat?cat_id=<?php echo $category->getId(); ?>" class="btn btn-info">Update</a>
+                                                                <a href="#" class="btn btn-info update-category" data-catid="<?php echo $category->getId(); ?>" data-catname="<?php echo $category->getcategoryName(); ?>" data-bs-toggle="modal" data-bs-target="#update-cat-modal">Update</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -235,7 +233,8 @@ $categoris = $categoryController->getAllCategories();
             </div>
 
 
-            
+
+
             <div class="modal fade" id="update-cat-modal" tabindex="-1" aria-labelledby="update-cat-modal-label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -246,13 +245,15 @@ $categoris = $categoryController->getAllCategories();
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <!-- Your form content for updating a category -->
-                            <form action="updateCategory" method="POST">
+                            <!-- Form for updating a category -->
+                            <form action="updateCategory" method="POST" id="updateCategoryForm">
                                 <!-- Hidden input field to store the category ID -->
                                 <input type="hidden" id="update-category-id" name="categoryId" value="">
                                 <div class="mb-3">
                                     <label for="update-Category-name" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" id="update-Category-name" name="updateCategoryName" placeholder="Enter Updated Category Name" required>
+                                    <input type="text" class="form-control" id="update-Category-name" name="CategoryName" placeholder="Enter Updated Category Name">
+                                    <!-- Error message span -->
+                                    <span id="updateCategoryNameError" class="error"></span>
                                 </div>
                                 <!-- Add more form fields if needed -->
                                 <div class="text-end">
@@ -263,6 +264,42 @@ $categoris = $categoryController->getAllCategories();
                     </div>
                 </div>
             </div>
+
+            <script>
+                // JavaScript to handle click event on 'Update' button and populate modal fields
+                const updateCategoryButtons = document.querySelectorAll('.update-category');
+
+                updateCategoryButtons.forEach(button => {
+                    button.addEventListener('click', function(event) {
+                        const categoryId = this.getAttribute('data-catid');
+                        const categoryName = this.getAttribute('data-catname');
+
+                        // Set the modal form fields with category ID and name
+                        document.getElementById('update-category-id').value = categoryId;
+                        document.getElementById('update-Category-name').value = categoryName;
+
+                        // Display the modal
+                        const updateCatModal = new bootstrap.Modal(document.getElementById('update-cat-modal'));
+                        updateCatModal.show();
+                    });
+                });
+
+                // Validate form before submitting
+                document.getElementById('updateCategoryForm').addEventListener('submit', function(event) {
+                    const updatedCategoryName = document.getElementById('update-Category-name').value.trim();
+                    if (updatedCategoryName === '') {
+                        // Display an error message in the span element
+                        const errorMessageSpan = document.getElementById('updateCategoryNameError');
+                        errorMessageSpan.textContent = 'Category Name is required.';
+                        event.preventDefault(); // Prevent form submission
+                    } else {
+                        // Clear the error message if the field is not empty
+                        const errorMessageSpan = document.getElementById('updateCategoryNameError');
+                        errorMessageSpan.textContent = '';
+                    }
+                });
+            </script>
+
 
 
             <!-- Footer Start -->
