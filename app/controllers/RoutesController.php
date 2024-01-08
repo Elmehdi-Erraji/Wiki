@@ -41,9 +41,9 @@ class RoutesController {
        
         include __DIR__ .'../../../views/admin/wiki-add.php';
     }
-    public function wikiList(){
+    public function cat_tag(){
        
-        include __DIR__ .'../../../views/admin/wiki-list.php';
+        include __DIR__ .'../../../views/admin/cat-tag-list.php';
     }
     public function tagAdd(){
        

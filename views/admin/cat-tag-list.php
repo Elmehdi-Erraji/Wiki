@@ -115,7 +115,7 @@ $categoris = $categoryController->getAllCategories();
                                                             <td><?php echo $tag->getTagName(); ?></td>
 
                                                             <td>
-                                                                <a href="Delete-tag?tag_id=<?php echo $tag->getId();?>" class="btn btn-danger">Delete</a>
+                                                                <a href="Delete-tag?tag_id=<?php echo $tag->getId(); ?>" class="btn btn-danger">Delete</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -134,7 +134,7 @@ $categoris = $categoryController->getAllCategories();
 
                                     <div class="p-3">
 
-                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#cat-modal">Add a new Category</button>
+                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#cat-modal">Add a new Category</button>
                                         <br>
                                         <br>
 
@@ -234,6 +234,35 @@ $categoris = $categoryController->getAllCategories();
                 </div>
             </div>
 
+
+            
+            <div class="modal fade" id="update-cat-modal" tabindex="-1" aria-labelledby="update-cat-modal-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="update-cat-modal-label">Update Category</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <!-- Your form content for updating a category -->
+                            <form action="updateCategory" method="POST">
+                                <!-- Hidden input field to store the category ID -->
+                                <input type="hidden" id="update-category-id" name="categoryId" value="">
+                                <div class="mb-3">
+                                    <label for="update-Category-name" class="form-label">Category Name</label>
+                                    <input type="text" class="form-control" id="update-Category-name" name="updateCategoryName" placeholder="Enter Updated Category Name" required>
+                                </div>
+                                <!-- Add more form fields if needed -->
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary" name="updateCategory">Update Category</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- Footer Start -->

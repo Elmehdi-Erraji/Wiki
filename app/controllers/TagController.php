@@ -28,7 +28,7 @@ class TagController {
             $result = $tagService->addTag($tag);
 
             if($result){
-                header('location: wiki-list');
+                header('location: cat-tag');
                 exit();
             }else{
                 return false;
@@ -45,7 +45,7 @@ class TagController {
             $result = $tagService->deleteTag($tagId);
 
             if($result){
-                header('location: wiki-list');
+                header('location: cat-tag');
                 exit();
             }else{
                 echo 'Failde to delete tag';

@@ -29,7 +29,7 @@ class CategoryController{
             $result = $catService->addCategory( $cat);
 
             if($result){
-                header('location: wiki-list');
+                header('location: cat-tag');
             }else {
                 return false ;
             }
@@ -47,7 +47,7 @@ class CategoryController{
             $result = $catService->deleteCat($catId);
 
             if($result){
-                header('location: wiki-list');
+                header('location: cat-tag');
                 exit();
             }else{
                 echo 'Failde to delete tag';
