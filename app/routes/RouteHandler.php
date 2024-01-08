@@ -32,6 +32,7 @@ $router->setRoutes([
         'updateUser'=>['UserController' , 'updateUser'],
         'updateProfile'=>['UserController' , 'updateProfile'],
         'addTag'=>['TagController' , 'addTag'],
+        'addCategory'=>['CategoryController' , 'addCategory'],
     ]
 ]);
 if (isset($_GET['url'])) {

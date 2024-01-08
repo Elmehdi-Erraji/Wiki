@@ -4,7 +4,7 @@ namespace app\Controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use app\config\db_conn;
-use app\Models\User;
+use app\entities\User;
 use app\services\UserServices;
 
 use PDO;

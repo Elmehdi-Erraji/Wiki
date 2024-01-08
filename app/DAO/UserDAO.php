@@ -3,7 +3,7 @@
 namespace app\DAO;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use app\Models\User;
+use app\entities\User;
 
 interface UserDAO {
     public function createUser(User $user);

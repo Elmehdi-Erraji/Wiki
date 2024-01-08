@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\models;
+namespace App\entities;
 
 
 class Category {
@@ -8,9 +8,8 @@ class Category {
     private $id;
     private $categoryName;
 
-    public function __construct($id, $categoryName)
+    public function __construct($categoryName)
     {
-        $this->id = $id;
         $this->categoryName = $categoryName;
     }
 

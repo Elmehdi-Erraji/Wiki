@@ -4,8 +4,10 @@ namespace app\Controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use app\config\db_conn;
-use app\Models\Tag;
+use app\entities\Tag;
 use app\services\TagServices;
+
+use app\controllers\RoutesController;
 
 use PDO;
 use PDOException;
@@ -52,5 +54,11 @@ class TagController {
         }else {
             echo 'Tag id is missing';
         }
+    }
+
+   
+    public function getAllTags() {
+        $tags = TagServices::getAllTags();
+        return $tags;
     }
 }

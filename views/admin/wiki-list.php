@@ -4,10 +4,14 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 // include '../../app/controllers/UserController.php';
 
-use app\Controllers\UserController;
+use app\Controllers\TagController;
+use app\Controllers\CategoryController;
 
-$userController = new UserController();
-$users = $userController->getAllUsers();
+$tagController = new TagController();
+$tags = $tagController->getAllTags();
+
+$categoryController = new CategoryController();
+$categoris = $categoryController->getAllCategories();
 
 ?>
 <!DOCTYPE html>
@@ -40,6 +44,7 @@ $users = $userController->getAllUsers();
 </head>
 
 <body>
+
     <!-- Begin page -->
     <div class="wrapper">
 
@@ -85,7 +90,7 @@ $users = $userController->getAllUsers();
                                 <div class="card-body p-0">
 
                                     <div class="p-3">
-                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signup-modal">Add a new Tag</button>
+                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#tag-modal">Add a new Tag</button>
                                         <br>
                                         <br>
                                     </div>
@@ -103,14 +108,14 @@ $users = $userController->getAllUsers();
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach ($users as $user) : ?>
+                                                    <?php foreach ($tags as $tag) : ?>
                                                         <tr>
 
-                                                            <td><?php echo $user->getUsername(); ?></td>
-                                                            <td><?php echo $user->getEmail(); ?></td>
+                                                            <td><?php echo $tag->getId(); ?></td>
+                                                            <td><?php echo $tag->getTagName(); ?></td>
 
                                                             <td>
-                                                                <a href="Delete?user_id=<?php echo $user->getId(); ?>" class="btn btn-danger">Delete</a>
+                                                                <a href="Delete?user_id=<?php echo $tag->getId();?>" class="btn btn-danger">Delete</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -129,7 +134,7 @@ $users = $userController->getAllUsers();
 
                                     <div class="p-3">
 
-                                        <a href="category-add"><button type="button" class="btn btn-info">Add a new Category</button></a>
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#cat-modal">Add a new Category</button>
                                         <br>
                                         <br>
 
@@ -148,17 +153,17 @@ $users = $userController->getAllUsers();
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach ($users as $user) : ?>
+                                                    <?php foreach ($categoris as $category) : ?>
                                                         <tr>
 
-                                                            <td><?php echo $user->getUsername(); ?></td>
-                                                            <td><?php echo $user->getEmail(); ?></td>
+                                                            <td><?php echo $category->getId(); ?></td>
+                                                            <td><?php echo $category->getcategoryName(); ?></td>
 
 
 
                                                             <td>
-                                                                <a href="Delete?user_id=<?php echo $user->getId(); ?>" class="btn btn-danger">Delete</a>
-                                                                <a href="Update?user_id=<?php echo $user->getId(); ?>" class="btn btn-info">Update</a>
+                                                                <a href="Delete?user_id=<?php echo $category->getId(); ?>" class="btn btn-danger">Delete</a>
+                                                                <a href="Update?user_id=<?php echo $category->getId(); ?>" class="btn btn-info">Update</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -177,12 +182,12 @@ $users = $userController->getAllUsers();
 
             </div>
 
-            <div class="modal fade" id="signup-modal" tabindex="-1" aria-labelledby="signup-modal-label" aria-hidden="true">
+            <div class="modal fade" id="tag-modal" tabindex="-1" aria-labelledby="tag-modal-label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal header -->
                         <div class="modal-header">
-                            <h5 class="modal-title" id="signup-modal-label">Add a new Tag</h5>
+                            <h5 class="modal-title" id="tag-modal-label">Add a new Tag</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <!-- Modal body -->
@@ -196,6 +201,32 @@ $users = $userController->getAllUsers();
                                 <!-- Add more form fields if needed -->
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary" name="addTag">Add Tag</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="cat-modal" tabindex="-1" aria-labelledby="cat-modal-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="cat-modal-label">Add a new Category</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <!-- Your form content for adding a new tag -->
+                            <form action="addCategory" method="POST">
+                                <div class="mb-3">
+                                    <label for="Category-name" class="form-label">Category Name</label>
+                                    <input type="text" class="form-control" id="Category-name" name="CategoryName" placeholder="Enter Category name" required>
+                                </div>
+                                <!-- Add more form fields if needed -->
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary" name="addCategory">Add Tag</button>
                                 </div>
                             </form>
                         </div>

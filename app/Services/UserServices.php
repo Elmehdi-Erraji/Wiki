@@ -4,7 +4,7 @@
 namespace app\services;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use app\Models\User;
+use app\entities\User;
 
 use app\DAO\UserDAO;
 

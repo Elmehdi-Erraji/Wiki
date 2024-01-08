@@ -4,7 +4,7 @@
 namespace app\services;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use app\Models\Tag;
+use app\entities\Tag;
 
 
 use app\config\db_conn;
@@ -50,6 +50,32 @@ class TagServices{
         }else{
             return false;
         }
+    }
+
+
+
+    public static function getAllTags() {
+        $connection = db_conn::getConnection();
+        $tags = [];
+    
+        $query = "SELECT * FROM tag";
+    
+        $statement = $connection->query($query);
+    
+        if ($statement) {
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                $tag = new Tag(
+                    $row['tagName']
+                );
+    
+                // Assuming setId method exists in the Tag class
+                $tag->setId($row['id']);
+    
+                $tags[] = $tag;
+            }
+        }
+    
+        return $tags;
     }
 
 }
