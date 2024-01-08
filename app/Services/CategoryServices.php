@@ -36,6 +36,22 @@ class CategoryServices {
         }
     }
 
+    public function deleteCat($cat){
+
+        $catId = $cat;
+
+        $query = "DELETE FROM category WHERE id = :catId";
+        $stmt=$this->db->prepare($query);
+        $stmt->bindParam(":catId", $catId);
+
+        $result = $stmt->execute();
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     public static function getAllCategories() {
         $connection = db_conn::getConnection();

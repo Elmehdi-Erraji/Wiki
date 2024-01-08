@@ -39,6 +39,25 @@ class CategoryController{
 
     }
 
+    public function deleteCat(){
+        if(isset($_GET['cat_id'])){
+            $catId = $_GET['cat_id'];
+
+            $catService = new CategoryServices();
+            $result = $catService->deleteCat($catId);
+
+            if($result){
+                header('location: wiki-list');
+                exit();
+            }else{
+                echo 'Failde to delete tag';
+            }
+
+        }else {
+            echo 'Tag id is missing';
+        }
+    }
+
 
     public function getAllCategories() {
         $Categories = CategoryServices::getAllCategories();

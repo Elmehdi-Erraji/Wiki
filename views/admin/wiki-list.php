@@ -115,7 +115,7 @@ $categoris = $categoryController->getAllCategories();
                                                             <td><?php echo $tag->getTagName(); ?></td>
 
                                                             <td>
-                                                                <a href="Delete?user_id=<?php echo $tag->getId();?>" class="btn btn-danger">Delete</a>
+                                                                <a href="Delete-tag?tag_id=<?php echo $tag->getId();?>" class="btn btn-danger">Delete</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -162,8 +162,8 @@ $categoris = $categoryController->getAllCategories();
 
 
                                                             <td>
-                                                                <a href="Delete?user_id=<?php echo $category->getId(); ?>" class="btn btn-danger">Delete</a>
-                                                                <a href="Update?user_id=<?php echo $category->getId(); ?>" class="btn btn-info">Update</a>
+                                                                <a href="Delete-cat?cat_id=<?php echo $category->getId(); ?>" class="btn btn-danger">Delete</a>
+                                                                <a href="Update-cat?cat_id=<?php echo $category->getId(); ?>" class="btn btn-info">Update</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>

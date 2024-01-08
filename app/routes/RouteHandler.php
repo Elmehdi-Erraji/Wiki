@@ -16,6 +16,7 @@ $router->setRoutes([
         'user-list'=>['RoutesController' , 'userList'],
         'profile'=>['RoutesController' , 'profile'],
         'Delete'=>['RoutesController' , 'userDelete'],
+        
         'Update'=>['RoutesController' , 'Update'],
         'logout'=>['UserController' , 'logout'],
         'fetchUsers'=>['UserController' , 'fetchUsers'],
@@ -23,6 +24,8 @@ $router->setRoutes([
         'wiki-list'=>['RoutesController' , 'wikiList'],
         'tag-add'=>['RoutesController' , 'tagAdd'],
         'category-add'=>['RoutesController' , 'categoryAdd'],
+        'Delete-tag'=>['TagController' , 'deleteTag'],
+        'Delete-cat'=>['CategoryController' , 'deleteCat'],
 
     ],
     'POST'=>[

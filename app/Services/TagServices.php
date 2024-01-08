@@ -36,9 +36,9 @@ class TagServices{
 
     }
 
-    public function deleteTag(Tag $tag){
+    public function deleteTag($tag){
 
-        $tagId = $tag->getId();
+        $tagId = $tag;
 
         $query = "DELETE FROM tag WHERE id = :tagId";
         $stmt=$this->db->prepare($query);
