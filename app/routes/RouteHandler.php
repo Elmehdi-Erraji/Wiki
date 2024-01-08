@@ -19,6 +19,10 @@ $router->setRoutes([
         'Update'=>['RoutesController' , 'Update'],
         'logout'=>['UserController' , 'logout'],
         'fetchUsers'=>['UserController' , 'fetchUsers'],
+        'wiki-add'=>['RoutesController' , 'wikiAdd'],
+        'wiki-list'=>['RoutesController' , 'wikiList'],
+        'tag-add'=>['RoutesController' , 'tagAdd'],
+        'category-add'=>['RoutesController' , 'categoryAdd'],
 
     ],
     'POST'=>[
@@ -27,6 +31,7 @@ $router->setRoutes([
         'addUser'=>['UserController' , 'addUser'],
         'updateUser'=>['UserController' , 'updateUser'],
         'updateProfile'=>['UserController' , 'updateProfile'],
+        'addTag'=>['TagController' , 'addTag'],
     ]
 ]);
 if (isset($_GET['url'])) {

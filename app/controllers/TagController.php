@@ -1,0 +1,56 @@
+<?php
+
+namespace app\Controllers;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use app\config\db_conn;
+use app\Models\Tag;
+use app\services\TagServices;
+
+use PDO;
+use PDOException;
+
+
+class TagController {
+
+    public function addTag(){
+        if(isset($_POST['addTag'])){
+            $postData = $_POST ?? [];
+
+            $tagName = $postData['tagName'];
+
+            $tag = new Tag($tagName);
+
+            $tagService = new TagServices();
+
+            $result = $tagService->addTag($tag);
+
+            if($result){
+                header('location: wiki-list');
+                exit();
+            }else{
+                return false;
+            }
+
+        }
+    }
+
+    public function deleteTag(){
+        if(isset($_GET['tag_id'])){
+            $tagId = $_GET['tag_id'];
+
+            $tagService = new TagServices();
+            $result = $tagService->deleteTag($tagId);
+
+            if($result){
+                header('location: wiki-list');
+                exit();
+            }else{
+                echo 'Failde to delete tag';
+            }
+
+        }else {
+            echo 'Tag id is missing';
+        }
+    }
+}

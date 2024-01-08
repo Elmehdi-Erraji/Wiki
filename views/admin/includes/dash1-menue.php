@@ -70,10 +70,10 @@ if (isset($_SESSION['role_id'])) {
             <div class="collapse" id="sidebarServices">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="wiki-list.php">Wiki's List</a>
+                        <a href="wiki-list">Wiki's List</a>
                     </li>
                     <li>
-                        <a href="wiki-add.php">Wiki's Add</a>
+                        <a href="wiki-add">Wiki's Add</a>
                     </li>
                 </ul>
             </div>

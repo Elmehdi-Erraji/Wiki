@@ -37,4 +37,21 @@ class RoutesController {
        
         include __DIR__ .'../../../views/admin/user-update.php';
     }
+    public function wikiAdd(){
+       
+        include __DIR__ .'../../../views/admin/wiki-add.php';
+    }
+    public function wikiList(){
+       
+        include __DIR__ .'../../../views/admin/wiki-list.php';
+    }
+    public function tagAdd(){
+       
+        include __DIR__ .'../../../views/admin/tag-Add.php';
+    }
+    public function categoryAdd(){
+       
+        include __DIR__ .'../../../views/admin/category-add.php';
+    }
+   
 }
