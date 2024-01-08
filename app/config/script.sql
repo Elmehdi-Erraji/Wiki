@@ -37,7 +37,11 @@ CREATE TABLE wiki (
     title VARCHAR(255),
     content TEXT,
     image VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status INT,
     category_id INT,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (category_id) REFERENCES category(id)
 );
 

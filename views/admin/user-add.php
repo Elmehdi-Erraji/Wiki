@@ -27,11 +27,12 @@
     <!-- Icons css -->
     <link href="/wiki/app/routes/../../public/css/icons.min.css" rel="stylesheet" type="text/css" />
     <style>
-     .error {
-        color: red;
-        font-size: 14px; /* Adjust the font size as needed */
-    }
-</style>
+        .error {
+            color: red;
+            font-size: 14px;
+            /* Adjust the font size as needed */
+        }
+    </style>
 </head>
 
 <body>
@@ -116,11 +117,11 @@
                                                     <select class="form-select" id="user_role" name="user_role">
                                                         <option value="1">Admin</option>
                                                         <option value="2">Author</option>
-                                                        
+
                                                     </select>
                                                     <span class="error" id="userRoleError"></span>
                                                 </div>
-                                                
+
 
                                                 <!-- User Status -->
                                                 <div class="mb-3">
@@ -166,53 +167,53 @@
                                                 <button type="submit" id="submitButton" class="btn btn-primary" name="addUser">Submit</button>
                                             </form>
                                             <script>
-                                               document.getElementById('addUserForm').addEventListener('submit', function(event) {
-    let isValid = true;
+                                                document.getElementById('addUserForm').addEventListener('submit', function(event) {
+                                                    let isValid = true;
 
-    // Validation for Username
-    let username = document.getElementById('name').value.trim();
-    if (username === '') {
-        document.getElementById('nameError').textContent = 'Username is required';
-        isValid = false;
-    } else {
-        document.getElementById('nameError').textContent = '';
-    }
+                                                    // Validation for Username
+                                                    let username = document.getElementById('name').value.trim();
+                                                    if (username === '') {
+                                                        document.getElementById('nameError').textContent = 'Username is required';
+                                                        isValid = false;
+                                                    } else {
+                                                        document.getElementById('nameError').textContent = '';
+                                                    }
 
-    // Validation for Email
-    let email = document.getElementById('email').value.trim();
-    if (email === '') {
-        document.getElementById('emailError').textContent = 'Email is required';
-        isValid = false;
-    } else {
-        document.getElementById('emailError').textContent = '';
-    }
+                                                    // Validation for Email
+                                                    let email = document.getElementById('email').value.trim();
+                                                    if (email === '') {
+                                                        document.getElementById('emailError').textContent = 'Email is required';
+                                                        isValid = false;
+                                                    } else {
+                                                        document.getElementById('emailError').textContent = '';
+                                                    }
 
-    // Validation for Password
-    let password = document.getElementById('password').value.trim();
-    if (password === '') {
-        document.getElementById('passwordError').textContent = 'Password is required';
-        isValid = false;
-    } else {
-        document.getElementById('passwordError').textContent = '';
-    }
+                                                    // Validation for Password
+                                                    let password = document.getElementById('password').value.trim();
+                                                    if (password === '') {
+                                                        document.getElementById('passwordError').textContent = 'Password is required';
+                                                        isValid = false;
+                                                    } else {
+                                                        document.getElementById('passwordError').textContent = '';
+                                                    }
 
-    // Validation for Confirm Password
-    let confirmPassword = document.getElementById('confirmPassword').value.trim();
-    if (confirmPassword === '') {
-        document.getElementById('confirmPasswordError').textContent = 'Confirm password is required';
-        isValid = false;
-    } else if (confirmPassword !== password) {
-        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
-        isValid = false;
-    } else {
-        document.getElementById('confirmPasswordError').textContent = '';
-    }
+                                                    // Validation for Confirm Password
+                                                    let confirmPassword = document.getElementById('confirmPassword').value.trim();
+                                                    if (confirmPassword === '') {
+                                                        document.getElementById('confirmPasswordError').textContent = 'Confirm password is required';
+                                                        isValid = false;
+                                                    } else if (confirmPassword !== password) {
+                                                        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                                                        isValid = false;
+                                                    } else {
+                                                        document.getElementById('confirmPasswordError').textContent = '';
+                                                    }
 
-    if (!isValid) {
-        event.preventDefault(); // Prevent form submission if validation fails
-    }
-});
-</script>
+                                                    if (!isValid) {
+                                                        event.preventDefault(); // Prevent form submission if validation fails
+                                                    }
+                                                });
+                                            </script>
                                         </div>
                                     </div>
 

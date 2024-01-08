@@ -37,6 +37,9 @@ $router->setRoutes([
         'addTag'=>['TagController' , 'addTag'],
         'addCategory'=>['CategoryController' , 'addCategory'],
         'updateCategory'=>['CategoryController' , 'updateCategory'],
+        'addWiki'=>['WikiController' , 'addWiki'],
+        'updateWiki'=>['WikiController' , 'updateWiki'],
+
     ]
 ]);
 if (isset($_GET['url'])) {
