@@ -45,4 +45,20 @@ class WikiController {
         return $wikies;
     }
 
+    public function wikiDelete(){
+
+        $wiki_id = $_GET["wiki_id"];
+
+        $wikiService = new WikiServices();
+
+        $result = $wikiService->deleteWiki($wiki_id);
+
+        if ($result) {
+            header ("location: wiki-list");
+            exit();
+        }else {
+            echo "faild to delete this wiki";
+        }
+    }
+
 }

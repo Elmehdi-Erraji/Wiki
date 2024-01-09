@@ -81,4 +81,29 @@ class WikiServices {
         return $wikies;
     }
 
+
+    public function deleteWiki($wiki_id){
+
+          $id=$wiki_id;
+
+       try {
+
+        $this->db->beginTransaction();
+
+        $tagDelete = "delete from wiki_tag where wiki_id = ?";
+        $stmt = $this->db->prepare($tagDelete);
+        $stmt->execute([ $id]);
+
+        $wikiDelete = "delete from wiki where id = ?";
+        $stmt = $this->db->prepare($wikiDelete);
+        $stmt->execute([ $id]);
+
+        $this->db->commit();
+        return true;
+
+       } catch(PDOException $e) {
+        $this->db->rollBack();
+        echo "Error :" . $e->getMessage();
+       }
+    }
 }

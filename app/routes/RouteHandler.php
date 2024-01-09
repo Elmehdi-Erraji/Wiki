@@ -26,6 +26,7 @@ $router->setRoutes([
         'Delete-cat'=>['CategoryController' , 'deleteCat'],
         'wiki-add'=>['RoutesController' , 'wikiAdd'],
         'wiki-list'=>['RoutesController' , 'wikiList'],
+        'Delete-Wiki'=>['WikiController' , 'wikiDelete'],
 
     ],
     'POST'=>[

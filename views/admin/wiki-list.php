@@ -138,8 +138,8 @@ $wikies = $wikiController->getAllWikies();
                                                                     } 
                                                                     ?></td>
                                                             <td>
-                                                                <a href="Delete?user_id=<?php echo $wiki->getId(); ?>" class="btn btn-danger">Delete</a>
-                                                                <a href="Update?user_id=<?php echo $wiki->getId(); ?>" class="btn btn-info">Update</a>
+                                                                <a href="Delete-Wiki?wiki_id=<?php echo $wiki->getId(); ?>" class="btn btn-danger">Delete</a>
+                                                                <a href="Update-Wiki?wiki_id=<?php echo $wiki->getId(); ?>" class="btn btn-info">Update</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
