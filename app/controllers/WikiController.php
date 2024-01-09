@@ -21,14 +21,14 @@ class WikiController {
             $imageTemp = $_FILES['article_image']['tmp_name'];
             $content = $_POST['content'];
             $userId = $_POST['user_id'];
-    
+            $status = 1;
             $uploadDirectory = '../../public/images/wikies/';
             $uploadedImagePath = $uploadDirectory . $image;
     
             $uploadResult = move_uploaded_file($imageTemp, $uploadedImagePath);
     
             if ($uploadResult) {
-                $wiki = new Wiki($title, $content, $uploadedImagePath, $userId, $category,$userId);
+                $wiki = new Wiki($title, $content, $uploadedImagePath, $status, $category,$userId);
                 $wikiService = new WikiServices();
                 $wikiService->addWikiWithTags($wiki, $tags);
                 header("Location: wiki-list");

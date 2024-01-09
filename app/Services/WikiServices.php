@@ -23,9 +23,9 @@ class WikiServices {
             $this->db->beginTransaction();
 
             // Insert Wiki entry
-            $sql = "INSERT INTO wiki (title, content, image, category_id, user_id) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO wiki (title, content, image,status,category_id, user_id) VALUES (?, ?, ?, ?, ?,?)";
             $stmt = $this->db->prepare($sql);
-            $stmt->execute([$wiki->getTitle(), $wiki->getContent(), $wiki->getImage(), $wiki->getCategoryId(), $wiki->getUserId()]);
+            $stmt->execute([$wiki->getTitle(), $wiki->getContent(), $wiki->getImage(),$wiki->getStatus(), $wiki->getCategoryId(), $wiki->getUserId()]);
             $wikiId = $this->db->lastInsertId();
 
             // Associate tags with the Wiki entry
