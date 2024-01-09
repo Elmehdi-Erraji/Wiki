@@ -27,6 +27,7 @@ $router->setRoutes([
         'wiki-add'=>['RoutesController' , 'wikiAdd'],
         'wiki-list'=>['RoutesController' , 'wikiList'],
         'Delete-Wiki'=>['WikiController' , 'wikiDelete'],
+        'Update-Wiki'=>['RoutesController' , 'UpdateWiki'],
 
     ],
     'POST'=>[

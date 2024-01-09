@@ -57,5 +57,10 @@ class RoutesController {
        
         include __DIR__ .'../../../views/admin/wiki-list.php';
     }
+
+    public function UpdateWiki(){
+       
+        include __DIR__ .'../../../views/admin/wiki-update.php';
+    }
    
 }

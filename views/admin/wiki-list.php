@@ -132,9 +132,11 @@ $wikies = $wikiController->getAllWikies();
                                                             <td> <?php
                                                                     $statusId = $wiki->getStatus();
                                                                     if ($statusId === 0) { // Adjust this condition based on your role IDs
-                                                                        echo '<span class="badge bg-primary">Pending</span>';
+                                                                        echo '<span class="badge bg-info-subtle text-info">Pending</span>';
                                                                     } else if ($statusId === 1) { // Adjust this condition based on your role IDs
-                                                                        echo '<span class="badge bg-info-subtle text-info">Published</span>';
+                                                                        echo '<span class="badge bg-warning-subtle text-warning">Accepted</span>';
+                                                                    }  else if ($statusId === 2) { // Adjust this condition based on your role IDs
+                                                                        echo '<span class="badge bg-secondary">Refuded</span>';
                                                                     } 
                                                                     ?></td>
                                                             <td>
