@@ -11,8 +11,13 @@ use app\services\UserServices;
 // Fetch user details by ID using UserDAO method
 $userService = new UserServices();
 $userId = $_SESSION['user_id'];
-// Fetch user details by ID using UserServices instance method
 $user = $userService->getUserById($userId);
+
+use app\controllers\WikiController;
+
+$wikiController = new WikiController();
+
+$MyWikies = $wikiController->getMyWikies($userId);
 
 ?>
 <div class="navbar-custom">

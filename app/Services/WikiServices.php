@@ -115,6 +115,44 @@ class WikiServices {
         return $wikies;
     }
 
+    public  function getMyWikies($id){
+        $userId = $id;
+        $db = db_conn::getConnection();
+        $Mywikies = [];
+
+        $query = "SELECT wiki.*, category.categoryName 
+        FROM wiki 
+        INNER JOIN category ON wiki.category_id = category.id where user_id = ?";
+
+        $stmt = $db->prepare($query);
+        $stmt->execute([$userId]);
+
+        if($stmt){
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $wiki = new Wiki(
+                    $row["title"],
+                    $row["content"],
+                    $row["image"],
+                    $row["status"],
+                    $row["category_id"],
+                    $row["created_at"],
+                    
+                );
+                $wiki->setId( $row["id"] );
+                $wiki->setUserId($row["user_id"]);
+                $created_at = $row["created_at"] ? date("Y-m-d", strtotime($row["created_at"])) : null;
+                $wiki->setCreatedAt($created_at);
+                
+                $categoryName = $row["categoryName"];
+                $wiki->setCategoryName($categoryName);
+                
+                $Mywikies[] = $wiki;
+            }
+        }
+        return $Mywikies;
+    }
+
+
 
     public function getWikiById($id){
         $db = db_conn::getConnection();

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard </title>
+    <title>Profile </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="fully responsive." name="description" />
     <meta content="Mehdi" name="author" />
@@ -80,31 +80,19 @@
                                                 echo '<p class="font-13"><span class="badge bg-primary">Admin</span></p>';
                                             } else if ($roleId === 2) {
                                                 echo '<p class="font-13"><span class="badge bg-info-subtle text-info">Author</span></p>';
-                                            } 
+                                            }
                                             ?>
-
+                                            
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="d-flex justify-content-end align-items-center gap-2">
 
-                                            <button id="editProfileButton" type="button" class="btn btn-soft-danger">
-                                                <i class="ri-settings-2-line align-text-bottom me-1 fs-16 lh-1"></i>
-                                                Edit Profile
-                                            </button>
-                                            <script>
-                                                document.addEventListener('DOMContentLoaded', function() {
-                                                    // Get the button and tab link elements
-                                                    var editProfileButton = document.getElementById('editProfileButton');
-                                                    var editProfileLink = document.getElementById('editProfileLink');
+                                            <a href="wiki-add" class="btn btn-primary">
+                                                <i class="ri-add-line align-text-bottom me-1 fs-16 lh-1"></i>
+                                                Add Wiki
+                                            </a>
 
-                                                    // Add a click event listener to the button
-                                                    editProfileButton.addEventListener('click', function() {
-                                                        // Trigger a click event on the tab link
-                                                        editProfileLink.click();
-                                                    });
-                                                });
-                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +110,7 @@
                                         <ul class="nav nav-underline nav-justified gap-0">
 
                                             <li class="nav-item"><a id="editProfileLink " class="nav-link active" data-bs-toggle="tab" data-bs-target="#edit-profile" role="tab" aria-controls="home" aria-selected="true" href="#edit-profile">Settings</a></li>
-                                            <li class="nav-item"><a class="nav-link " data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="home" aria-selected="true" href="#projects">properties</a></li>
+                                            <li class="nav-item"><a class="nav-link " data-bs-toggle="tab" data-bs-target="#Wikies" type="button" role="tab" aria-controls="home" aria-selected="true" href="#Wikies">My Wikies</a></li>
                                         </ul>
 
                                         <div class="tab-content m-0 p-4">
@@ -142,7 +130,7 @@
                                                                 <input type="email" name="email" value="<?php echo $user->getEmail(); ?>" id="Email" class="form-control">
                                                                 <span id="emailError" class="error-message"></span> <!-- Error span for email -->
                                                             </div>
-                                                            
+
                                                             <div class="mb-3">
                                                                 <label for="file" class="form-label">Upload Image </label>
                                                                 <input type="file" id="file" name="user_image" class="form-control" accept="image/jpeg, image/png, image/jpg">
@@ -176,7 +164,7 @@
                                                             }
 
                                                             // Check if passwords are provided and match
-                    
+
                                                             // Add validation for file upload (image) if provided
                                                             if (fileInput.value.trim() !== '') {
                                                                 if (fileInput.accept.includes(fileInput.files[0].type)) {
@@ -199,68 +187,45 @@
                                             </div>
 
                                             <!-- properties -->
-                                            <div id="projects" class="tab-pane">
+                                            <div id="Wikies" class="tab-pane">
                                                 <div class="row m-t-10">
                                                     <div class="col-md-12">
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered mb-0">
+
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>#</th>
-                                                                        <th>Project Name</th>
-                                                                        <th>Start Date</th>
-                                                                        <th>Due Date</th>
+                                                                        <th>Id</th>
+                                                                        <th>Wiki Title</th>
+                                                                        <th>Category</th>
                                                                         <th>Status</th>
-                                                                        <th>Assign</th>
+                                                                        <th>Actions</th>
+
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                    <?php foreach($MyWikies as $MyWiki) :?>
                                                                     <tr>
-                                                                        <td>1</td>
-                                                                        <td>Velonic Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="badge bg-info">Work
-                                                                                in Progress</span></td>
-                                                                        <td>rent</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>2</td>
-                                                                        <td>property one</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="badge bg-success">Pending</span>
+                                                                        <td><?php echo $MyWiki->getId(); ?></td>
+                                                                        <td><?php echo $MyWiki->getTitle(); ?></td>
+                                                                        <td><?php echo $MyWiki->getCategoryName(); ?></td>
+                                                                        
+                                                                        <td><?php
+                                                                            $statusId = $MyWiki->getStatus();
+                                                                            if ($statusId === 0) { // Adjust this condition based on your role IDs
+                                                                                echo '<span class="badge bg-info-subtle text-info">Pending</span>';
+                                                                            } else if ($statusId === 1) { // Adjust this condition based on your role IDs
+                                                                                echo '<span class="badge bg-warning-subtle text-warning">Accepted</span>';
+                                                                            } else if ($statusId === 2) { // Adjust this condition based on your role IDs
+                                                                                echo '<span class="badge bg-secondary">Refuded</span>';
+                                                                            }
+                                                                       ?> </td>
+                                                                        <td>
+                                                                        <a href="Delete-Wiki?wiki_id=<?php echo $MyWiki->getId(); ?>" class="btn btn-danger">Delete</a>
+                                                                        <a href="Update-Wiki?wiki_id=<?php echo $MyWiki->getId(); ?>" class="btn btn-info">Update</a>
                                                                         </td>
-                                                                        <td>rent</td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td>3</td>
-                                                                        <td>Velonic Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="badge bg-pink">Done</span>
-                                                                        </td>
-                                                                        <td>rent</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>4</td>
-                                                                        <td>property one</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="badge bg-purple">Work
-                                                                                in Progress</span></td>
-                                                                        <td>rent</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>5</td>
-                                                                        <td>Velonic Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="badge bg-warning">Coming
-                                                                                soon</span></td>
-                                                                        <td>rent</td>
-                                                                    </tr>
-
+                                                                        <?php endforeach; ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>

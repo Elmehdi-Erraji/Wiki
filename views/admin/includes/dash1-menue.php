@@ -44,6 +44,12 @@ if (isset($_SESSION['role_id'])) {
                         </a>
                     </li>
                     <li class="side-nav-item">
+                        <a href="Home" class="side-nav-link">
+                        <i class="ri-home-line"></i>
+                            <span> Home </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarUsers" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
                             <i class="ri-group-2-line"></i>
                             <span> Users </span>
@@ -83,6 +89,12 @@ if (isset($_SESSION['role_id'])) {
                         <a href="cat-tag" class="side-nav-link">
                             <i class="ri-questionnaire-line"></i>
                             <span> Tags and Categories </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="Home" class="side-nav-link">
+                        <i class="ri-home-line"></i>
+                            <span> Home </span>
                         </a>
                     </li>
 

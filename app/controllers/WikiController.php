@@ -33,7 +33,7 @@ class WikiController
                 $wiki = new Wiki($title, $content, $uploadedImagePath, $status, $category, $userId);
                 $wikiService = new WikiServices();
                 $wikiService->addWikiWithTags($wiki, $tags);
-                header("Location: wiki-list");
+                header("Location: profile");
                 exit();
             } else {
                 echo "failed to add a wiki";
@@ -84,16 +84,22 @@ class WikiController
             // Perform the update operation
             $wikiService->updateWikiWithTags($existingWiki, $tags);
     
-            header("Location: wiki-list");
+            header("Location: profile");
             exit();
         }
     }
-    
 
     public function getAllWikies()
     {
         $wikies = WikiServices::getAllWikies();
         return $wikies;
+    }
+
+    public function getMyWikies($user_id){
+        $id = $user_id;
+        $wikies = new WikiServices();
+        $result = $wikies->getMyWikies($id);
+        return $result;
     }
 
     public function wikiDelete()
@@ -106,7 +112,7 @@ class WikiController
         $result = $wikiService->deleteWiki($wiki_id);
 
         if ($result) {
-            header("location: wiki-list");
+            header("location: profile");
             exit();
         } else {
             echo "faild to delete this wiki";
@@ -122,7 +128,7 @@ class WikiController
 
             $result = $wikiServices->updateWikiStatus($wikiId, $newStatus);
             if ($result) { 
-                header('location: wiki-list');
+                header('location: profile');
                 exit();
             }
                 else{
