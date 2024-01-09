@@ -139,7 +139,6 @@ $wikies = $wikiController->getAllWikies();
                                                                     ?></td>
                                                             <td>
                                                                 <a href="Delete-Wiki?wiki_id=<?php echo $wiki->getId(); ?>" class="btn btn-danger">Delete</a>
-                                                                <a href="Update-Wiki?wiki_id=<?php echo $wiki->getId(); ?>" class="btn btn-info">Update</a>
                                                                 <a href="#" class="btn btn-warning update-visibility" data-wikiid="<?php echo $wiki->getId(); ?>" data-bs-toggle="modal" data-bs-target="#update-wiki-status-modal">Update Visibility</a>
                                                             </td>
                                                         </tr>

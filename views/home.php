@@ -531,7 +531,6 @@
       </footer>
 
     <script src="/wiki/app/routes/../../public/js/jquery-3.2.1.min.js"></script>
-    <script src="/wiki/app/routes/../../public/js/jquery-migrate-3.0.0.js"></script>
     <script src="/wiki/app/routes/../../public/js/popper.min.js"></script>
     <script src="/wiki/app/routes/../../public/js/bootstrap.min.js"></script>
     <script src="/wiki/app/routes/../../public/js/owl.carousel.min.js"></script>

@@ -91,82 +91,20 @@ if (isset($_SESSION['role_id'])) {
                             <span> Tags and Categories </span>
                         </a>
                     </li>
-                    <li class="side-nav-item">
-                        <a href="Home" class="side-nav-link">
-                        <i class="ri-home-line"></i>
-                            <span> Home </span>
-                        </a>
-                    </li>
 
                 <?php } ?>
 
 
                 <?php if ($user_type === 2) { ?>
                     <li class="side-nav-item">
-                        <a href="announcment-list" class="side-nav-link">
-                            <i class="ri-dashboard-3-line"></i>
-                            <span> Dashboard </span>
+                        <a href="Home" class="side-nav-link">
+                        <i class="ri-home-line"></i>
+                            <span> Home </span>
                         </a>
-                    <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
-                            <i class="ri-pencil-ruler-2-line"></i>
-                            <span> Announces </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarServices">
-                            <ul class="side-nav-second-level">
-                                <li>
-                                    <a href="reservations-list.php">Add Announces</a>
-                                </li>
-                                <li>
-                                    <a href="reservations-list.php">Announces List</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
-                    <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarFAQ" aria-expanded="false" aria-controls="sidebarFAQ" class="side-nav-link">
-                            <i class="ri-questionnaire-line"></i>
-                            <span> Comments </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarFAQ">
-                            <ul class="side-nav-second-level">
-                                <li>
-                                    <a href="dash-comments">Comments List</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    
                 <?php } ?>
-                <?php if ($user_type === 3) { ?>
-                    <li class="side-nav-item">
-                        <a href="list" class="side-nav-link">
-                            <i class="ri-dashboard-3-line"></i>
-                            <span> Dashboard </span>
-                        </a>
-
-                    <li class="side-nav-item">
-                        <a href="users" class="side-nav-link">
-                            <i class="ri-mail-line"></i>
-                            <span> Messages </span>
-                        </a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarFAQ" aria-expanded="false" aria-controls="sidebarFAQ" class="side-nav-link">
-                            <i class="ri-questionnaire-line"></i>
-                            <span> Comments </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarFAQ">
-                            <ul class="side-nav-second-level">
-                                <li>
-                                    <a href="dash-comments">Comments List</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                <?php } ?>
+               
             </ul>
             <!--- End Sidemenu -->
         </div>

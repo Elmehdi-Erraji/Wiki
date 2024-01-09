@@ -137,5 +137,13 @@ class WikiController
      
     }
 
+    public function showData() {
+        $model = new WikiServices();
+        $wikiCount = $model->countWikis();
+        // Include the view file and pass the variables
+        return [$wikiCount];
+    }
+
+
 
 }

@@ -244,4 +244,23 @@ class WikiServices {
             echo "Error: " . $e->getMessage();
         }
     }
+
+
+
+    public function countWikis() {
+        try {
+            $query = "SELECT COUNT(*) as wiki_count FROM wiki";
+            
+            // Assuming $pdo is your PDO instance, adjust the connection details accordingly
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+    
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            return $data['wiki_count'];
+        } catch (PDOException $e) {
+            // Handle exceptions, log errors, or return a default value if something goes wrong
+            return 0; // Default value if an error occurs
+        }
+    }
 }
