@@ -188,24 +188,26 @@ $wikies = $wikiController->getAllWikies();
                     </div>
 
                     <script>
-                        // JavaScript to handle click event on 'Update Visibility' button
-                        const updateWikiStatusButton = document.querySelector('.btn-warning');
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const updateVisibilityButtons = document.querySelectorAll('.update-visibility');
 
-                        updateWikiStatusButton.addEventListener('click', function(event) {
-                            const wikiId = this.getAttribute('data-wikiid');
+                            updateVisibilityButtons.forEach(button => {
+                                button.addEventListener('click', function(event) {
+                                    const wikiId = this.getAttribute('data-wikiid');
 
-                            // Set the modal form field with wiki ID
-                            document.getElementById('update-wiki-id').value = wikiId;
+                                    // Set the modal form field with wiki ID
+                                    document.getElementById('update-wiki-id').value = wikiId;
 
-                            // Display the modal
-                            const updateWikiStatusModal = new bootstrap.Modal(document.getElementById('update-wiki-status-modal'));
-                            updateWikiStatusModal.show();
-                        });
+                                    // Display the modal
+                                    const updateWikiStatusModal = new bootstrap.Modal(document.getElementById('update-wiki-status-modal'));
+                                    updateWikiStatusModal.show();
+                                });
+                            });
 
-                        // Validate form before submitting
-                        document.getElementById('updateWikiStatusForm').addEventListener('submit', function(event) {
-                            // You can add form validation logic if needed
-                            // For example, to ensure the wiki status is selected before submission
+                            // Validate form before submitting (if needed)
+                            document.getElementById('updateWikiStatusForm').addEventListener('submit', function(event) {
+                                // You can add form validation logic here if needed
+                            });
                         });
                     </script>
 
