@@ -45,4 +45,40 @@ class WikiServices {
         }
     }
 
+
+    public static function getAllWikies(){
+        $db = db_conn::getConnection();
+        $wikies = [];
+
+        $query = "SELECT wiki.*, category.categoryName 
+        FROM wiki 
+        INNER JOIN category ON wiki.category_id = category.id";
+
+        $stmt = $db->query($query);
+
+        if($stmt){
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $wiki = new Wiki(
+                    $row["title"],
+                    $row["content"],
+                    $row["image"],
+                    $row["status"],
+                    $row["category_id"],
+                    $row["created_at"],
+                    
+                );
+                $wiki->setId( $row["id"] );
+                $wiki->setUserId($row["user_id"]);
+                $created_at = $row["created_at"] ? date("Y-m-d", strtotime($row["created_at"])) : null;
+                $wiki->setCreatedAt($created_at);
+                
+                $categoryName = $row["categoryName"];
+                $wiki->setCategoryName($categoryName);
+                
+                $wikies[] = $wiki;
+            }
+        }
+        return $wikies;
+    }
+
 }

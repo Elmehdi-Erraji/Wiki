@@ -40,4 +40,9 @@ class WikiController {
     }
     
 
+    public function getAllWikies(){
+        $wikies = WikiServices::getAllWikies();
+        return $wikies;
+    }
+
 }

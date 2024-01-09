@@ -13,6 +13,8 @@ class Wiki {
     private $category_id;
     private $user_id;
 
+    private $categoryName;
+
     public function __construct( $title, $content, $image, $status, $category_id, $user_id) {
        
         $this->title = $title;
@@ -23,10 +25,20 @@ class Wiki {
         $this->user_id = $user_id;
     }
 
-    // Getters and setters for each property
+
+    public function getCategoryName() {
+        return $this->categoryName;
+    }
+
+    public function setCategoryName($categoryName) {
+        $this->categoryName = $categoryName;
+    }
 
     public function getId() {
         return $this->id;
+    }
+    public function setId($id) {
+       $this->id = $id;
     }
 
     public function getTitle() {
