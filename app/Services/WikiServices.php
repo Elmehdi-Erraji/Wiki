@@ -45,6 +45,40 @@ class WikiServices {
         }
     }
 
+    public function updateWikiWithTags(Wiki $wiki, array $tagIds)
+    {
+        try {
+            // Begin transaction
+            $this->db->beginTransaction();
+    
+            // Update Wiki entry
+            $sql = "UPDATE wiki SET title = ?, content = ?, image = ?, status = ?, category_id = ? WHERE id = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$wiki->getTitle(), $wiki->getContent(), $wiki->getImage(), $wiki->getStatus(), $wiki->getCategoryId(), $wiki->getId()]);
+    
+            // Delete existing associations between wiki and tags
+            $deleteTagsSql = "DELETE FROM wiki_tag WHERE wiki_id = ?";
+            $deleteTagsStmt = $this->db->prepare($deleteTagsSql);
+            $deleteTagsStmt->execute([$wiki->getId()]);
+    
+            // Associate new tags with the Wiki entry
+            $tagInsertSql = "INSERT INTO wiki_tag (wiki_id, tag_id) VALUES (?, ?)";
+            $tagInsertStmt = $this->db->prepare($tagInsertSql);
+            foreach ($tagIds as $tagId) {
+                $tagInsertStmt->execute([$wiki->getId(), $tagId]);
+            }
+    
+            // Commit the transaction
+            $this->db->commit();
+        } catch (PDOException $e) {
+            // Roll back the transaction upon failure
+            $this->db->rollBack();
+            // Handle exception or log error
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+
 
     public static function getAllWikies(){
         $db = db_conn::getConnection();
@@ -81,6 +115,50 @@ class WikiServices {
         return $wikies;
     }
 
+
+    public function getWikiById($id){
+        $db = db_conn::getConnection();
+        $wiki = null;
+    
+        $query = "SELECT wiki.*, category.categoryName 
+            FROM wiki 
+            INNER JOIN category ON wiki.category_id = category.id WHERE wiki.id = ?";
+    
+        $stmt = $db->prepare($query);
+        $stmt->execute([$id]);
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($row){
+            $wiki = new Wiki(
+                $row["title"],
+                $row["content"],
+                $row["image"],
+                $row["status"],
+                $row["category_id"],
+                $row["created_at"]
+            );
+            $wiki->setId($row["id"]);
+            $wiki->setUserId($row["user_id"]);
+            $created_at = $row["created_at"] ? date("Y-m-d", strtotime($row["created_at"])) : null;
+            $wiki->setCreatedAt($created_at);
+            
+            $categoryName = $row["categoryName"];
+            $wiki->setCategoryName($categoryName);
+    
+            // Fetch related tags for the wiki from wiki_tag table
+            $tagsQuery = "SELECT tag.tagName
+                          FROM wiki_tag
+                          INNER JOIN tag ON wiki_tag.tag_id = tag.id
+                          WHERE wiki_tag.wiki_id = ?";
+            $tagsStmt = $db->prepare($tagsQuery);
+            $tagsStmt->execute([$id]);
+            $tags = $tagsStmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            $tagNames = array_column($tags, 'tagName');
+            $wiki->setTags($tagNames); // Assuming 'setTags' is a method in the Wiki class to set tag names
+        }
+        return $wiki;
+    }
 
     public function deleteWiki($wiki_id){
 

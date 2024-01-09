@@ -96,9 +96,6 @@ class UserController{
     }
 }
 
-
-
-
 public function login() {
     $postData = $_POST ?? [];
     $email = $postData['email'] ?? '';
@@ -175,9 +172,6 @@ public function login() {
         $users = UserServices::getAllUserss();
         return $users;
     }
-
-
-
     public function userDelete() {
 
         if(isset($_GET['user_id'])){

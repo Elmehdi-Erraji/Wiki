@@ -15,6 +15,8 @@ class Wiki {
 
     private $categoryName;
 
+    private $tags = [];
+
     public function __construct( $title, $content, $image, $status, $category_id, $user_id) {
        
         $this->title = $title;
@@ -25,7 +27,13 @@ class Wiki {
         $this->user_id = $user_id;
     }
 
+    public function getTags() {
+        return $this->tags;
+    }
 
+    public function setTags($tags) {
+        $this->tags = $tags;
+    }
     public function getCategoryName() {
         return $this->categoryName;
     }

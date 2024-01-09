@@ -79,10 +79,8 @@
                                             if ($roleId === 1) {
                                                 echo '<p class="font-13"><span class="badge bg-primary">Admin</span></p>';
                                             } else if ($roleId === 2) {
-                                                echo '<p class="font-13"><span class="badge bg-info-subtle text-info">Seller</span></p>';
-                                            } else {
-                                                echo '<p class="font-13"><span class="badge bg-warning">Client</span></p>';
-                                            }
+                                                echo '<p class="font-13"><span class="badge bg-info-subtle text-info">Author</span></p>';
+                                            } 
                                             ?>
 
                                         </div>
