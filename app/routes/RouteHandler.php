@@ -41,6 +41,7 @@ $router->setRoutes([
         'updateCategory'=>['CategoryController' , 'updateCategory'],
         'addWiki'=>['WikiController' , 'addWiki'],
         'updateWiki'=>['WikiController' , 'updateWiki'],
+        'updateWikiStatus'=>['WikiController' , 'updateWikiStatus'],
 
     ]
 ]);

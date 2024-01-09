@@ -112,4 +112,24 @@ class WikiController
             echo "faild to delete this wiki";
         }
     }
+
+    public function updateWikiStatus() {
+        
+            $wikiId = $_POST['wikiId'];
+            $newStatus = $_POST['wikiStatus'];
+            
+            $wikiServices = new WikiServices();   
+
+            $result = $wikiServices->updateWikiStatus($wikiId, $newStatus);
+            if ($result) { 
+                header('location: wiki-list');
+                exit();
+            }
+                else{
+                    echo 'something went wrong';
+                }
+     
+    }
+
+
 }

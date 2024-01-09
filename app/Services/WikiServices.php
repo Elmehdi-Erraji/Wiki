@@ -184,4 +184,26 @@ class WikiServices {
         echo "Error :" . $e->getMessage();
        }
     }
+
+
+    public function updateWikiStatus($wikiId, $newStatus) {
+        try {
+            // Begin transaction
+            $this->db->beginTransaction();
+    
+            // Update Wiki status
+            $sql = "UPDATE wiki SET status = ? WHERE id = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$newStatus, $wikiId]);
+    
+            // Commit the transaction
+            $this->db->commit();
+            return true;
+        } catch (PDOException $e) {
+            // Roll back the transaction upon failure
+            $this->db->rollBack();
+            // Handle exception or log error
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }

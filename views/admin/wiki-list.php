@@ -104,7 +104,7 @@ $wikies = $wikiController->getAllWikies();
                                         <a href="wiki-add"><button type="button" class="btn btn-info">Add a new Wiki</button></a>
                                         <br>
                                         <br>
-                                       
+
                                     </div>
 
 
@@ -135,13 +135,14 @@ $wikies = $wikiController->getAllWikies();
                                                                         echo '<span class="badge bg-info-subtle text-info">Pending</span>';
                                                                     } else if ($statusId === 1) { // Adjust this condition based on your role IDs
                                                                         echo '<span class="badge bg-warning-subtle text-warning">Accepted</span>';
-                                                                    }  else if ($statusId === 2) { // Adjust this condition based on your role IDs
+                                                                    } else if ($statusId === 2) { // Adjust this condition based on your role IDs
                                                                         echo '<span class="badge bg-secondary">Refuded</span>';
-                                                                    } 
+                                                                    }
                                                                     ?></td>
                                                             <td>
                                                                 <a href="Delete-Wiki?wiki_id=<?php echo $wiki->getId(); ?>" class="btn btn-danger">Delete</a>
                                                                 <a href="Update-Wiki?wiki_id=<?php echo $wiki->getId(); ?>" class="btn btn-info">Update</a>
+                                                                <a href="#" class="btn btn-warning update-visibility" data-wikiid="<?php echo $wiki->getId(); ?>" data-bs-toggle="modal" data-bs-target="#update-wiki-status-modal">Update Visibility</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -154,6 +155,59 @@ $wikies = $wikiController->getAllWikies();
                         </div> <!-- end col-->
                     </div>
                     <!-- end row -->
+
+                    <div class="modal fade" id="update-wiki-status-modal" tabindex="-1" aria-labelledby="update-wiki-status-modal-label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal header -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="update-wiki-status-modal-label">Update Wiki Visibility</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <!-- Form for updating wiki visibility -->
+                                    <form action="updateWikiStatus" method="POST" id="updateWikiStatusForm">
+                                        <!-- Hidden input field to store the wiki ID -->
+                                        <input type="hidden" id="update-wiki-id" name="wikiId" value="">
+                                        <div class="mb-3">
+                                            <label for="update-wiki-status" class="form-label">Select Visibility</label>
+                                            <select class="form-select" id="update-wiki-status" name="wikiStatus">
+                                                <option value="0">Pending</option>
+                                                <option value="1">Accepted</option>
+                                                <option value="2">Refused</option>
+                                            </select>
+                                        </div>
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary" name="updateWikiStatus">Update Visibility</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // JavaScript to handle click event on 'Update Visibility' button
+                        const updateWikiStatusButton = document.querySelector('.btn-warning');
+
+                        updateWikiStatusButton.addEventListener('click', function(event) {
+                            const wikiId = this.getAttribute('data-wikiid');
+
+                            // Set the modal form field with wiki ID
+                            document.getElementById('update-wiki-id').value = wikiId;
+
+                            // Display the modal
+                            const updateWikiStatusModal = new bootstrap.Modal(document.getElementById('update-wiki-status-modal'));
+                            updateWikiStatusModal.show();
+                        });
+
+                        // Validate form before submitting
+                        document.getElementById('updateWikiStatusForm').addEventListener('submit', function(event) {
+                            // You can add form validation logic if needed
+                            // For example, to ensure the wiki status is selected before submission
+                        });
+                    </script>
 
                 </div>
                 <!-- container -->
