@@ -78,4 +78,17 @@ class TagServices{
         return $tags;
     }
 
+
+
+
+    public  function getMostUsedTags($limit = 10) {
+        $query = 'SELECT TagName FROM tag ORDER BY id DESC LIMIT :limit';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':limit',$limit,PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }

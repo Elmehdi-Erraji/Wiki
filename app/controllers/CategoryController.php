@@ -7,9 +7,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use app\entities\Category;
 
 use app\services\CategoryServices;
-
-
-
+use app\services\TagServices;
 
 class CategoryController{
 
@@ -91,5 +89,9 @@ class CategoryController{
         // Include the view file and pass the variables
         return [$catCount];
     }
+
+
+
+   
 
 }

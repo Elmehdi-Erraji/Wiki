@@ -169,6 +169,7 @@ $categoris = $categoryController->getAllCategories();
                                             </table>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div> <!-- end col-->

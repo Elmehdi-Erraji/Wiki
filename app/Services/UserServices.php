@@ -48,22 +48,7 @@ class UserServices implements UserDAO{
    }
 
 
-//    public function getUserByidmesage($id) {
-//     $query = "SELECT * FROM users WHERE id = :id";
 
-//     try {
-//         $stmt = $this->db->prepare($query);
-//         $stmt->bindParam(':id', $id);
-//         $stmt->execute();
-//         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//         return $user ? $user : null; // Return the user details as an associative array or null if not found
-//     } catch (PDOException $e) {
-//         // Handle the exception or log the error
-//         return null; // Return null if an exception occurs
-//     }
-// }
-    
    
    public function updateUser(User $user) {
     // var_dump($user);

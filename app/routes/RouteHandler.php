@@ -7,7 +7,10 @@ $router = new Router();
 $router->setRoutes([
     'GET'=>[
         ''=> ['RoutesController','index'],
-        'home'=> ['RoutesController','index'],
+        'home'=> ['HomeController','index'],
+
+
+        
         'wiki'=> ['RoutesController','wiki'],
         'login'=> ['RoutesController','login'],
         'register'=> ['RoutesController','register'],

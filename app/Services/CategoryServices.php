@@ -110,5 +110,16 @@ class CategoryServices {
             return 0; // Default value if an error occurs
         }
     }
+
+
+
+    public  function getMostUsedCategories($limit = 5) {
+        $query = 'SELECT categoryName FROM category ORDER BY id DESC LIMIT :limit';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':limit',$limit,PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }

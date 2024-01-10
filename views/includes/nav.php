@@ -3,8 +3,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Untree.co">
 
-  <link rel="shortcut icon" href="favicon.png">
-
+  <link rel="shortcut icon" href="/wiki/app/routes/../../public/images/favicon.ico">
+  
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/wiki/app/routes/../../public/fonts/icomoon/style.css">
@@ -42,9 +42,9 @@
               </form>
 
               <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">                
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="#">Log In</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="home">Home</a></li>
+                <li><a href="login">Log In</a></li>
+                <li><a href="register">Register</a></li>
               </ul>
             </div>
             <div class="col-2 text-end">
