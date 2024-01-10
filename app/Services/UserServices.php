@@ -6,13 +6,13 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use app\entities\User;
 
-use app\DAO\UserDAO;
+
 
 use app\config\db_conn;
 use PDO;
 use PDOException;
 
-class UserServices implements UserDAO{
+class UserServices {
 
     private $db;
 

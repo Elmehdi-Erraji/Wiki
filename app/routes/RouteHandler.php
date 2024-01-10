@@ -6,10 +6,9 @@ $router = new Router();
 
 $router->setRoutes([
     'GET'=>[
-        ''=> ['RoutesController','index'],
+        ''=> ['HomeController','index'],
         'home'=> ['HomeController','index'],
     
-
         'wiki'=> ['HomeController','wiki'],
         'login'=> ['RoutesController','login'],
         'register'=> ['RoutesController','register'],

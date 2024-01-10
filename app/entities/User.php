@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\entities;
+namespace app\entities;
 
 class User {
     private $id;
