@@ -8,10 +8,9 @@ $router->setRoutes([
     'GET'=>[
         ''=> ['RoutesController','index'],
         'home'=> ['HomeController','index'],
+    
 
-
-        
-        'wiki'=> ['RoutesController','wiki'],
+        'wiki'=> ['HomeController','wiki'],
         'login'=> ['RoutesController','login'],
         'register'=> ['RoutesController','register'],
         'error'=> ['RoutesController','index'],

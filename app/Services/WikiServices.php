@@ -263,4 +263,39 @@ class WikiServices {
             return 0; // Default value if an error occurs
         }
     }
+
+
+    public function fetchWikiData() {
+        try {
+            $dbConnection = db_conn::getConnection();
+            
+            // Prepare SQL query
+            $query = 'SELECT wiki.id, wiki.title, wiki.image AS wiki_image, 
+                    wiki.created_at, wiki.status,
+                    category.categoryName AS category_name,
+                    GROUP_CONCAT(tag.tagName) AS tags
+                    FROM wiki
+                    LEFT JOIN category ON wiki.category_id = category.id
+                    LEFT JOIN wiki_tag ON wiki.id = wiki_tag.wiki_id
+                    LEFT JOIN tag ON wiki_tag.tag_id = tag.id
+                    WHERE wiki.status = 1
+                    GROUP BY wiki.id';
+            
+            // Execute the query using PDO
+            $statement = $dbConnection->query($query);
+            
+            // Fetch data as associative array
+            $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Close the database connection properly
+            $dbConnection = null;
+            
+            return $data; // Return the fetched data as an array
+            
+        } catch (PDOException $e) {
+            // Handle any database connection errors
+            http_response_code(500); // Internal Server Error
+            return array(); // Return an empty array in case of an error
+        }
+    }
 }
