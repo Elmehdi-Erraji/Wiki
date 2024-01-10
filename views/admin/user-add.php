@@ -255,10 +255,7 @@
     <!-- ============================================================== -->
 
     </div>
-    <!-- END wrapper -->
-
-    <!-- Theme Settings -->
-
+ 
 
     <!-- Vendor js -->
     <script src="/wiki/app/routes/../../public/js/vendor.min.js"></script>

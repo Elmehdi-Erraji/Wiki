@@ -9,6 +9,10 @@ class RoutesController {
         include __DIR__ ."../../../views/home.php";
     }
 
+    public function wiki() {
+        include __DIR__ ."../../../views/wiki.php";
+    }
+
     public function login() {
         include __DIR__ ."../../../views/auth/login.php";
     }
