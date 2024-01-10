@@ -44,7 +44,7 @@ if (isset($_SESSION['role_id'])) {
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="Home" class="side-nav-link">
+                        <a href="home" class="side-nav-link">
                         <i class="ri-home-line"></i>
                             <span> Home </span>
                         </a>
@@ -97,7 +97,7 @@ if (isset($_SESSION['role_id'])) {
 
                 <?php if ($user_type === 2) { ?>
                     <li class="side-nav-item">
-                        <a href="Home" class="side-nav-link">
+                        <a href="home" class="side-nav-link">
                         <i class="ri-home-line"></i>
                             <span> Home </span>
                         </a>

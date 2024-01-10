@@ -1,15 +1,3 @@
-<?php
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-use app\Controllers\WikiController;
-
-$wikiController = new WikiController();
-$wikies = $wikiController->getAllWikies();
-
-// var_dump($wikies);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

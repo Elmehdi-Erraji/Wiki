@@ -1,33 +1,4 @@
-<?php
-require_once __DIR__ . '../../../vendor/autoload.php';
 
-
-include '../../app/controllers/UserController.php';
-
-use app\Controllers\UserController;
-use app\services\UserServices;
-
-if (isset($_GET['user_id'])) {
-    $userId = $_GET['user_id'];
-
-    // Fetch user details by ID using UserDAO method
-    $userService = new UserServices();
-
-    // Fetch user details by ID using UserServices instance method
-    $userinfo = $userService->getUserById($userId);
-    if (!$userinfo) {
-        echo "User not found!";
-        exit();
-    }
-} else {
-    echo "Invalid user ID!";
-    exit();
-}
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

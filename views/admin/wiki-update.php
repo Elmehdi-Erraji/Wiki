@@ -1,31 +1,3 @@
-<?php
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-use app\controllers\WikiController;
-use app\services\WikiServices;
-use app\Controllers\CategoryController;
-use app\Controllers\TagController;
-
-if (isset($_GET['wiki_id'])) {
-    $wikiId = $_GET['wiki_id'];
-
-
-    $wikiService = new WikiServices();
-    $wikiDetails = $wikiService->getWikiById($wikiId);
-    if (!$wikiDetails) {
-        echo "wiki not found !";
-        exit();
-    }
-    $categoryController = new CategoryController();
-    $categories = $categoryController->getAllCategories();
-    $tagController = new TagController();
-    $tags = $tagController->getAllTags();
-}
-
-// var_dump($wikiDetails);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

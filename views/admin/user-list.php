@@ -1,15 +1,4 @@
-<?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-// include '../../app/controllers/UserController.php';
-
-use app\Controllers\UserController;
-
-$userController = new UserController();
-$users = $userController->getAllUsers();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

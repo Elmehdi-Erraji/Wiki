@@ -1,28 +1,3 @@
-<?php
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-
-use app\Controllers\UserController;
-use app\Controllers\CategoryController;
-use app\Controllers\WikiController;
-
-$cat = new CategoryController();
-list($catCount)=$cat->showData();
-
-$wiki = new WikiController();
-list($wikiCount)=$wiki->showData();
-
-$data = new UserController();
-list($userCount) = $data->showData();
-
-$errors = $_SESSION['updateUserErrors'] ?? [];
-unset($_SESSION['updateUserErrors']); // Clear the errors after displaying them
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

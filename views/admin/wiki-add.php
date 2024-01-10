@@ -1,19 +1,3 @@
-<?php
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-// include '../../app/controllers/UserController.php';
-
-use app\Controllers\TagController;
-use app\Controllers\CategoryController;
-
-$tagController = new TagController();
-$tags = $tagController->getAllTags();
-
-$categoryController = new CategoryController();
-$categoris = $categoryController->getAllCategories();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
