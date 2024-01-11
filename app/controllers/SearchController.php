@@ -3,7 +3,7 @@
 namespace App\controller;
 
 use App\config\db_conn;
-use PDO;
+
 class SearchController
 {
     private $database;
@@ -17,12 +17,20 @@ class SearchController
     {
         if (isset($_GET['q'])) {
             $query = $_GET['q'];
-            $stmt = $this->database->prepare("SELECT id, title, image, created_at, category_id FROM wiki WHERE title LIKE ?");
+            $stmt = $this->database->prepare("SELECT title, content FROM wiki WHERE title LIKE ?");
             $stmt->execute(["%$query%"]);
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $results = $stmt->fetchAll();
+
+            $data = [];
+            foreach ($results as $row) {
+                $data[] = [
+                    'title' => $row['title'], // Use array notation for fetching data
+                    'content' => $row['content']
+                ];
+            }
 
             header('Content-Type: application/json');
-            echo json_encode($results);
+            echo json_encode($data);
             exit();
         }
     }
