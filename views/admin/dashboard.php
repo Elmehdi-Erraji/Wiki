@@ -23,7 +23,7 @@
     <!-- Icons css -->
     <link href="/Brief-10-ImmoConnect/app/routes/../../public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-  
+
     <!-- Icons css -->
     <link href="/Brief-10-ImmoConnect/app/routes/../../public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 </head>
@@ -33,8 +33,8 @@
     <div class="wrapper">
 
         <!-- ========== Topbar Start ========== -->
-        <?php include 'includes/dash1-header.php';?>
-      
+        <?php include 'includes/dash1-header.php'; ?>
+
         <!-- ========== Topbar Start ========== -->
 
 
@@ -145,7 +145,7 @@
                                                         <th>ID</th>
                                                         <th>Username</th>
                                                         <th>E-mail</th>
-                                                        
+
                                                         <th>Status</th>
                                                         <th>Role</th>
                                                         <th>Actions</th>
@@ -193,26 +193,22 @@
                                         }
                                     }
 
-                                    function fetchData() {
-                                        var xhr = new XMLHttpRequest();
-
-                                        xhr.onreadystatechange = function() {
-                                            if (xhr.readyState === XMLHttpRequest.DONE) {
-                                                if (xhr.status === 200) {
-                                                    var data = JSON.parse(xhr.responseText);
-                                                    populateTable(data);
-                                                } else {
-                                                    console.error('Error fetching data: ' + xhr.status);
-                                                }
+                                    async function fetchData() {
+                                        try {
+                                            const response = await fetch('fetchUsers');
+                                            if (!response.ok) {
+                                                throw new Error(`Error fetching data: ${response.status}`);
                                             }
-                                        };
 
-                                        xhr.open('GET', 'fetchUsers', true);
-                                        xhr.send();
+                                            const data = await response.json();
+                                            populateTable(data);
+                                        } catch (error) {
+                                            console.error('Error:', error);
+                                        }
                                     }
 
-                                        function populateTable(data) {
-                                           console.log(data);
+                                    function populateTable(data) {
+                                        console.log(data);
                                         var tableBody = document.getElementById('tableBody');
                                         tableBody.innerHTML = '';
 
@@ -229,14 +225,12 @@
                                             <td >
                                                 <a href="Delete?user_id=${row.id}" class="btn btn-danger">Delete</a>
                                                 <a href="Update?user_id=${row.id}" class="btn btn-info">Update</a>
-                                                                                                                
                                             </td>
-                                        `;
+                                            `;
 
                                             tableBody.appendChild(newRow);
                                         });
                                     }
-                                    
                                 </script>
 
 
@@ -260,10 +254,10 @@
                         <!-- Theme Settings -->
 
 
-                    <!-- Vendor js -->
-                <script src="/Brief-10-ImmoConnect/app/routes/../../public/assets/js/vendor.min.js"></script>
-                <!-- App js -->
-                <script src="/Brief-10-ImmoConnect/app/routes/../../public/assets/js/app.min.js"></script>
+                        <!-- Vendor js -->
+                        <script src="/Brief-10-ImmoConnect/app/routes/../../public/assets/js/vendor.min.js"></script>
+                        <!-- App js -->
+                        <script src="/Brief-10-ImmoConnect/app/routes/../../public/assets/js/app.min.js"></script>
 
 </body>
 
