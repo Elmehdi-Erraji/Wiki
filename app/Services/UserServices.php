@@ -80,8 +80,6 @@ class UserServices {
     }
 }
     
-   
-
 
     public function getUserByEmail($email) {
         try {
@@ -117,8 +115,6 @@ class UserServices {
     }
 
 
-
-
     public static function getAllUserss() {
         $connection = db_conn::getConnection();
         $users = [];
@@ -147,7 +143,6 @@ class UserServices {
     
         return $users;
     }
-
 
 
     public function addUser(User $user) {
@@ -187,9 +182,6 @@ class UserServices {
     }
     
     
-
-
-
     public function updateUserprofile(User $user) {
         $userId = $user->getId();
         $username = $user->getUsername();
