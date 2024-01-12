@@ -31,6 +31,7 @@ $router->setRoutes([
         'wiki-list'=>['RoutesController' , 'wikiList'],
         'Delete-Wiki'=>['WikiController' , 'wikiDelete'],
         'Update-Wiki'=>['RoutesController' , 'UpdateWiki'],
+        'notFound'=>['RoutesController' , 'notfound'],
 
     ],
     'POST'=>[
@@ -72,7 +73,11 @@ if (isset($_GET['url'])) {
             throw new Exception('Route not found.');
         }
     } catch (Exception $e) {
-        echo 'Caught exception: ', $e->getMessage(), "\n";
+        header('HTTP/1.0 404 Not Found');
+        header('Location: notFound');
+        exit();
+       
+       
     }
 } else {
     echo 'error';

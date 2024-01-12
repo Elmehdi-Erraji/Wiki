@@ -62,6 +62,11 @@ class RoutesController
 
         include __DIR__ . '../../../views/admin/profile.php';
     }
+    public function notFound()
+    {
+
+        include __DIR__ . '../../../views/404.php';
+    }
     public function userAdd()
     {
         include __DIR__ . '../../../views/admin/user-add.php';
