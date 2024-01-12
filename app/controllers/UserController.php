@@ -13,35 +13,40 @@ class UserController{
 
     public function register() {
         if (isset($_POST['signup'])) {
-        $postData = $_POST ?? [];
-        $username = $postData['username'] ?? '';
-        $email = $postData['email'] ?? '';
-        $password = $postData['password'] ?? '';
-        
-        // Set initial values for image, status, and role_id
-        $image = null; 
-        $status = 0;  
-        $role_id = 2; 
+            $postData = $_POST ?? [];
+            $username = $postData['username'] ?? '';
+            $email = $postData['email'] ?? '';
+            $password = $postData['password'] ?? '';
     
-        // Create a Users object
-        $user = new User($username, $email, $password, $image, $status, $role_id);
+            $image = null; 
+            $status = 0;  
+            $role_id = 2; 
     
-        // Create an instance of UserServices
-        $userServices = new UserServices();
+            $user = new User($username, $email, $password, $image, $status, $role_id);
     
-        // Call the createUser method in UserServices to handle user creation logic
-        $result = $userServices->createUser($user);
+            $userServices = new UserServices();
     
-        // Return the result
-        if ($result) {
-            // User created successfully
-            header('location:login');
+            try {
+                $result = $userServices->createUser($user);
+    
+                if ($result) {
+                  
+                    header('Location: login');
+                    exit();
+                }
+            } catch (PDOException $e) {
+                session_start();
+                $_SESSION['registration_error'] = 'An error occurred during registration. Please try again.';
+                header('Location: register');
+                exit();
+            }
+    
+            header('Location: register');
             exit();
-        } else {
-            return false;
         }
     }
-    }
+    
+
     public function getUsers() {
         $users = new UserServices();
         $all= $users->getAllUsers();

@@ -14,7 +14,7 @@ class WikiServices {
 
     public function __construct()
     {
-        $this->db = db_conn::getConnection(); // Get database connection from DbConn class
+        $this->db = db_conn::getConnection(); 
     }
 
     public function addWikiWithTags(Wiki $wiki, array $tagIds) {
@@ -257,9 +257,9 @@ class WikiServices {
                     category.categoryName AS category_name,
                     GROUP_CONCAT(tag.tagName) AS tags
                     FROM wiki
-                     JOIN category ON wiki.category_id = category.id
-                     JOIN wiki_tag ON wiki.id = wiki_tag.wiki_id
-                     JOIN tag ON wiki_tag.tag_id = tag.id
+                    JOIN category ON wiki.category_id = category.id
+                    JOIN wiki_tag ON wiki.id = wiki_tag.wiki_id
+                    JOIN tag ON wiki_tag.tag_id = tag.id
                     WHERE wiki.status = 1
                     GROUP BY wiki.id';
             

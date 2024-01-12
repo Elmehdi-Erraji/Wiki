@@ -20,26 +20,31 @@ class UserServices {
     {
         $this->db = db_conn::getConnection(); // Get database connection from DbConn class
     }
-   public function createUser(User $user){
-        $username = $user->getUsername();
-        $email = $user->getEmail();
-        $password = $user->getPassword();
-        $image = null;
-        $status = $user->getStatus();
-        $role_id = $user->getRoleId();
-
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $query = "INSERT INTO users (username, email, password, image, status, role_id) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $success = $stmt->execute([$username, $email, $hashedPassword, $image, $status, $role_id]);
-
-        if ($success) {
-            return true;
-        } else {
-            return false;
+    public function createUser(User $user){
+        try {
+            $username = $user->getUsername();
+            $email = $user->getEmail();
+            $password = $user->getPassword();
+            $image = null;
+            $status = $user->getStatus();
+            $role_id = $user->getRoleId();
+    
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+            $query = "INSERT INTO users (username, email, password, image, status, role_id) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $success = $stmt->execute([$username, $email, $hashedPassword, $image, $status, $role_id]);
+    
+            if ($success) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+           echo "Error: " . $e->getMessage();
+            return null;
         }
-   }
+    }
 
 
 

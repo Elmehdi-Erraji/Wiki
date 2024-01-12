@@ -41,6 +41,13 @@
 
                                         <!-- form -->
                                         <form action="register" method="post">
+                                        <?php
+                                            session_start();
+                                            if (isset($_SESSION['registration_error'])) {
+                                                echo '<div class="alert alert-danger" role="alert">' . $_SESSION['registration_error'] . '</div>';
+                                                unset($_SESSION['registration_error']);
+                                            } 
+                                            ?>
                                             <div class="mb-3">
                                                 <label for="fullname" class="form-label">Username</label>
                                                 <input class="form-control" type="text" name="username" id="username" placeholder="Enter your first name" required="">
