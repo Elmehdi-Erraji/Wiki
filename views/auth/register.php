@@ -78,6 +78,8 @@
                 <div class="col-12 text-center">
                     <p class="text-dark-emphasis">Already have account? <a href="login" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Log In</b></a>
                     </p>
+                    <p class="text-dark-emphasis">Go back <a href="home" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Home</b></a>
+                    </p>
                 </div> <!-- end col -->
             </div>
             <!-- end row -->

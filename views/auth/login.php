@@ -85,13 +85,12 @@
                                         <script>
                                             document.getElementById('loginForm').addEventListener('submit', function(event) {
                                                 event.preventDefault(); // Prevent form submission for now
-                                                // Basic validation for email and password
+                                               
                                                 let email = document.getElementById('emailaddress').value.trim();
                                                 let password = document.getElementById('password').value.trim();
 
                                                 let valid = true;
 
-                                                // Validation checks - customize these as needed
                                                 if (email === '') {
                                                     document.getElementById('emailError').textContent = 'Email is required';
                                                     valid = false;
@@ -105,9 +104,7 @@
                                                 } else {
                                                     document.getElementById('passwordError').textContent = '';
                                                 }
-
                                                 if (valid) {
-                                                    // If all validations pass, submit the form
                                                     this.submit();
                                                 }
                                             });
@@ -124,6 +121,8 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <p class="text-dark-emphasis">Don't have an account? <a href="register" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Sign up</b></a>
+                    </p>
+                    <p class="text-dark-emphasis">Go back <a href="home" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Home</b></a>
                     </p>
                 </div> <!-- end col -->
             </div>
