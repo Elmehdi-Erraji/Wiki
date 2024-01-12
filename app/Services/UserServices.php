@@ -174,33 +174,27 @@ class UserServices {
         $userId = $user->getId();
         $username = $user->getUsername();
         $email = $user->getEmail();
-       
-     
-        $image = $user->getImage(); 
-        
+        $image = $user->getImage();
+    
         $connection = db_conn::getConnection();
         $connection->beginTransaction(); // Begin a transaction
     
         try {
-            $updateUserQuery = "UPDATE users SET username=?, email=?, image=? WHERE id=?";
+            $updateUserQuery = "UPDATE users SET username=?, email=?, image=IF(?, image, image) WHERE id=?";
             $stmtUpdateUser = $connection->prepare($updateUserQuery);
     
-            if (!$stmtUpdateUser) {
-                return false;
-            }
-            $successUpdateUser = $stmtUpdateUser->execute([$username, $email,  $image, $userId]);
+            $successUpdateUser = $stmtUpdateUser->execute([$username, $email, $image, $userId]);
     
             if ($successUpdateUser) {
                 $connection->commit();
-                return true; 
+                return true;
             } else {
                 $connection->rollBack();
-                return false; 
+                return false;
             }
         } catch (PDOException $e) {
             $connection->rollBack();
-        
-            return false; 
+            return false;
         }
     }
     

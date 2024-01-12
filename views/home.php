@@ -81,7 +81,7 @@ document.getElementById("s").addEventListener("input", async function (event) {
 
 async function filterWiki(searchTerm) {
   const wikiEntries = document.getElementById("searchResultsContainer");
-  wikiEntries.innerHTML = ''; // Clear previous content
+  wikiEntries.innerHTML = '';
 
   <?php foreach ($AllWikies as $wiki) : ?>
     {
