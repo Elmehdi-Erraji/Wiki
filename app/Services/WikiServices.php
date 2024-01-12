@@ -19,28 +19,24 @@ class WikiServices {
 
     public function addWikiWithTags(Wiki $wiki, array $tagIds) {
         try {
-            // Begin transaction
+           
             $this->db->beginTransaction();
-
-            // Insert Wiki entry
+          
             $sql = "INSERT INTO wiki (title, content, image,status,category_id, user_id) VALUES (?, ?, ?, ?, ?,?)";
             $stmt = $this->db->prepare($sql);
             $stmt->execute([$wiki->getTitle(), $wiki->getContent(), $wiki->getImage(),$wiki->getStatus(), $wiki->getCategoryId(), $wiki->getUserId()]);
             $wikiId = $this->db->lastInsertId();
 
-            // Associate tags with the Wiki entry
             $tagInsertSql = "INSERT INTO wiki_tag (wiki_id, tag_id) VALUES (?, ?)";
             $tagInsertStmt = $this->db->prepare($tagInsertSql);
             foreach ($tagIds as $tagId) {
                 $tagInsertStmt->execute([$wikiId, $tagId]);
             }
 
-            // Commit the transaction
+           
             $this->db->commit();
         } catch (PDOException $e) {
-            // Roll back the transaction upon failure
             $this->db->rollBack();
-            // Handle exception or log error
             echo "Error: " . $e->getMessage();
         }
     }
@@ -48,32 +44,25 @@ class WikiServices {
     public function updateWikiWithTags(Wiki $wiki, array $tagIds)
     {
         try {
-            // Begin transaction
             $this->db->beginTransaction();
     
-            // Update Wiki entry
             $sql = "UPDATE wiki SET title = ?, content = ?, image = ?, status = ?, category_id = ? WHERE id = ?";
             $stmt = $this->db->prepare($sql);
             $stmt->execute([$wiki->getTitle(), $wiki->getContent(), $wiki->getImage(), $wiki->getStatus(), $wiki->getCategoryId(), $wiki->getId()]);
     
-            // Delete existing associations between wiki and tags
             $deleteTagsSql = "DELETE FROM wiki_tag WHERE wiki_id = ?";
             $deleteTagsStmt = $this->db->prepare($deleteTagsSql);
             $deleteTagsStmt->execute([$wiki->getId()]);
     
-            // Associate new tags with the Wiki entry
             $tagInsertSql = "INSERT INTO wiki_tag (wiki_id, tag_id) VALUES (?, ?)";
             $tagInsertStmt = $this->db->prepare($tagInsertSql);
             foreach ($tagIds as $tagId) {
                 $tagInsertStmt->execute([$wiki->getId(), $tagId]);
             }
     
-            // Commit the transaction
             $this->db->commit();
         } catch (PDOException $e) {
-            // Roll back the transaction upon failure
             $this->db->rollBack();
-            // Handle exception or log error
             echo "Error: " . $e->getMessage();
         }
     }
@@ -193,7 +182,7 @@ class WikiServices {
             $tags = $tagsStmt->fetchAll(PDO::FETCH_ASSOC);
     
             $tagNames = array_column($tags, 'tagName');
-            $wiki->setTags($tagNames); // Assuming 'setTags' is a method in the Wiki class to set tag names
+            $wiki->setTags($tagNames);
         }
         return $wiki;
     }
@@ -226,21 +215,17 @@ class WikiServices {
 
     public function updateWikiStatus($wikiId, $newStatus) {
         try {
-            // Begin transaction
+         
             $this->db->beginTransaction();
-    
-            // Update Wiki status
             $sql = "UPDATE wiki SET status = ? WHERE id = ?";
             $stmt = $this->db->prepare($sql);
             $stmt->execute([$newStatus, $wikiId]);
     
-            // Commit the transaction
+          
             $this->db->commit();
             return true;
         } catch (PDOException $e) {
-            // Roll back the transaction upon failure
             $this->db->rollBack();
-            // Handle exception or log error
             echo "Error: " . $e->getMessage();
         }
     }
@@ -251,7 +236,6 @@ class WikiServices {
         try {
             $query = "SELECT COUNT(*) as wiki_count FROM wiki";
             
-            // Assuming $pdo is your PDO instance, adjust the connection details accordingly
             $stmt = $this->db->prepare($query);
             $stmt->execute();
     
@@ -259,8 +243,7 @@ class WikiServices {
             
             return $data['wiki_count'];
         } catch (PDOException $e) {
-            // Handle exceptions, log errors, or return a default value if something goes wrong
-            return 0; // Default value if an error occurs
+            return 0;
         }
     }
 
@@ -269,7 +252,6 @@ class WikiServices {
         try {
             $dbConnection = db_conn::getConnection();
             
-            // Prepare SQL query
             $query = 'SELECT wiki.id, wiki.title, wiki.image AS wiki_image, 
                     wiki.created_at, wiki.status,
                     category.categoryName AS category_name,
@@ -281,21 +263,17 @@ class WikiServices {
                     WHERE wiki.status = 1
                     GROUP BY wiki.id';
             
-            // Execute the query using PDO
+ 
             $statement = $dbConnection->query($query);
-            
-            // Fetch data as associative array
             $data = $statement->fetchAll(PDO::FETCH_ASSOC);
             
-            // Close the database connection properly
+        
             $dbConnection = null;
             
-            return $data; // Return the fetched data as an array
+            return $data; 
             
-        } catch (PDOException $e) {
-            // Handle any database connection errors
-            http_response_code(500); // Internal Server Error
-            return array(); // Return an empty array in case of an error
+        } catch (PDOException $e) { 
+            return array(); 
         }
     }
 }

@@ -86,7 +86,6 @@ class CategoryController{
     public function showData() {
         $count = new CategoryServices();
         $catCount = $count->countCategories();
-        // Include the view file and pass the variables
         return [$catCount];
     }
 

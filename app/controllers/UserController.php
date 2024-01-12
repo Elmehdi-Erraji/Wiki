@@ -101,17 +101,15 @@ public function login() {
     $email = $postData['email'] ?? '';
     $password = $postData['password'] ?? '';
 
-    // Validate and sanitize input data as needed
-
-    // Instantiate UserService
+   
     $userServices = new UserServices();
 
     // Get user details by email
     $user = $userServices->getUserByEmail($email);
 
     if ($user && password_verify($password, $user['password'])) {
-        if ($user['status'] == 0) { // Check if user status is active
-            // Start a session if not started
+        if ($user['status'] == 0) { 
+           
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
@@ -145,7 +143,7 @@ public function login() {
             exit();
         }
     } else {
-        // Redirect with error message for invalid credentials
+        
         session_start();
         $_SESSION['login_error'] = 'Invalid credentials. Please try again.';
         header('Location: login');
@@ -155,15 +153,9 @@ public function login() {
     public function logout() {
        
             session_start();
-    
-            // Unset all of the session variables
             $_SESSION = [];
-    
-            // Destroy the session
             session_destroy();
-    
-            // Redirect to the login page after logout
-            header('Location: login'); // Redirect to your login page
+            header('Location: login'); 
             exit();
         
     }
@@ -173,10 +165,8 @@ public function login() {
         return $users;
     }
     public function userDelete() {
-
         if(isset($_GET['user_id'])){
             $userId = $_GET['user_id'];
-
             $userService = new UserServices();
 
             $deleted = $userService->deleteUser($userId);
@@ -253,12 +243,6 @@ public function login() {
         }
 
 
-
-
-
-
-
-
         public function updateProfile() {
             $postData = $_POST ?? [];
             
@@ -280,22 +264,19 @@ public function login() {
                     }
                 }
                 
-                $userService = new UserServices();
-        
-                // Get the user object by ID to check if it exists
+                $userService = new UserServices();           
                 $existingUser = $userService->getUserById($userId);
                 
                 if ($existingUser) {
-                    // Update the user object with the new data
+                  
                     $existingUser->setUsername($username);
                     $existingUser->setEmail($email);
                     $existingUser->setImage($imagePath);
                     
-                    // Update the user in the database
+                  
                     $result = $userService->updateUserprofile($existingUser);
         
                     if ($result) {
-                        // User updated successfully
                         header('Location: profile');
                         exit();
                     } else {

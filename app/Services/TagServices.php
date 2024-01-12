@@ -68,17 +68,13 @@ class TagServices{
                     $row['tagName']
                 );
     
-                // Assuming setId method exists in the Tag class
                 $tag->setId($row['id']);
     
                 $tags[] = $tag;
             }
         }
-    
         return $tags;
     }
-
-
 
 
     public  function getMostUsedTags($limit = 10) {

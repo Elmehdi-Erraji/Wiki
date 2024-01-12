@@ -67,7 +67,6 @@ class CategoryServices {
                     $row['categoryName']
                 );
     
-                // Assuming setId method exists in the Tag class
                 $Category->setId($row['id']);
     
                 $Categories[] = $Category;
@@ -106,8 +105,7 @@ class CategoryServices {
             
             return $data['cat_count'];
         } catch (PDOException $e) {
-            // Handle exceptions, log errors, or return a default value if something goes wrong
-            return 0; // Default value if an error occurs
+            return 0; 
         }
     }
 

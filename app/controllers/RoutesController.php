@@ -5,10 +5,7 @@ namespace app\controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 
-use app\entities\Category;
 
-use app\services\CategoryServices;
-use app\services\TagServices;
 use app\services\UserServices;
 use app\services\WikiServices;
 
