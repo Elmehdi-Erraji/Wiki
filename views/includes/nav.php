@@ -33,7 +33,7 @@
         <div class="site-navigation">
           <div class="row g-0 align-items-center">
             <div class="col-2">
-              <a href="blog.html" class="logo m-0 float-start">Wiki<span class="text-primary">.</span></a>
+              <a href="home" class="logo m-0 float-start">Wiki<span class="text-primary">.</span></a>
             </div>
             <div class="col-8 text-center">
               <form action="#" class="search-form d-inline-block d-lg-none">

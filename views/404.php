@@ -20,13 +20,7 @@
     <!-- Icons css -->
     <link href="/wiki/app/routes/../../public/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-    <style>
-        .error-message {
-            color: red;
-            font-size: 14px;
-            /* Adjust the font size as needed */
-        }
-    </style>
+
 </head>
 
 <body class="authentication-bg position-relative">
