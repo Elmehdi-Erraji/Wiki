@@ -128,7 +128,7 @@ class WikiController
 
             $result = $wikiServices->updateWikiStatus($wikiId, $newStatus);
             if ($result) { 
-                header('location: profile');
+                header('location: wiki-list');
                 exit();
             }
                 else{

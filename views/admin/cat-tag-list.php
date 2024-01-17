@@ -210,7 +210,7 @@
                                 </div>
                                 <!-- Add more form fields if needed -->
                                 <div class="text-end">
-                                    <button type="submit" class="btn btn-primary" name="addCategory">Add Tag</button>
+                                    <button type="submit" class="btn btn-primary" name="addCategory">Add Category</button>
                                 </div>
                             </form>
                         </div>

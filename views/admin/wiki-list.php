@@ -186,6 +186,16 @@
                                     // Display the modal
                                     const updateWikiStatusModal = new bootstrap.Modal(document.getElementById('update-wiki-status-modal'));
                                     updateWikiStatusModal.show();
+
+                                    // Add event listener for modal hiding event
+                                    updateWikiStatusModal._element.addEventListener('hidden.bs.modal', function() {
+                                        // Remove the modal overlay manually when the modal is closed
+                                        document.body.classList.remove('modal-open');
+                                        const modalBackdrop = document.querySelector('.modal-backdrop');
+                                        if (modalBackdrop) {
+                                            modalBackdrop.remove();
+                                        }
+                                    });
                                 });
                             });
 

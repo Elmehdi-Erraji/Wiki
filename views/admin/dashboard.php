@@ -208,11 +208,11 @@
                                     }
 
                                     function populateTable(data) {
-                                        console.log(data);
+                                       
                                         var tableBody = document.getElementById('tableBody');
                                         tableBody.innerHTML = '';
 
-                                        console.log(data);
+                                       
                                         data.forEach(function(row) {
                                             var newRow = document.createElement('tr');
 

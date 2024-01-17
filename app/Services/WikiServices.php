@@ -149,7 +149,7 @@ class WikiServices {
     
         $query = "SELECT wiki.*, category.categoryName 
             FROM wiki 
-            INNER JOIN category ON wiki.category_id = category.id WHERE status = 1 AND wiki.id = ?";
+            INNER JOIN category ON wiki.category_id = category.id WHERE  wiki.id = ?";
     
         $stmt = $db->prepare($query);
         $stmt->execute([$id]);
