@@ -249,6 +249,7 @@ public function login() {
 
 
         public function updateProfile() {
+           
             $postData = $_POST ?? [];
             
              
@@ -258,8 +259,8 @@ public function login() {
              
                 
                 // Handle image upload
-                $image = $_FILES['user_image'] ?? null;
-                $imagePath = null;
+                $image = $_FILES['image'];
+                // $imagePath = null;
                 if ($image && $image['error'] === UPLOAD_ERR_OK) {
                     $uploadDirectory = '../../public/images/users/';
                     $imageName = basename($image['name']);

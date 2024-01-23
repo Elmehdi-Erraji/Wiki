@@ -133,14 +133,14 @@
 
                                                             <div class="mb-3">
                                                                 <label for="file" class="form-label">Upload Image </label>
-                                                                <input type="file" id="file" name="user_image" class="form-control" accept="image/jpeg, image/png, image/jpg">
+                                                                <input type="file" id="file" name="image" class="form-control" accept="image/jpeg, image/png, image/jpg">
                                                                 <span id="imageError" class="error-message"></span> <!-- Error span for image upload -->
                                                             </div>
                                                         </div>
                                                         <button class="btn btn-primary" type="submit" name="updateProfile"><i class="ri-save-line me-1 fs-16 lh-1"></i> Save</button>
                                                     </form>
 
-                                                    <script>
+                                                    <!-- <script>
                                                         document.getElementById('userForm').addEventListener('submit', function(event) {
                                                             event.preventDefault(); // Prevent form submission for now
                                                             let username = document.getElementById('FullName').value.trim();
@@ -180,7 +180,7 @@
                                                                 this.submit();
                                                             }
                                                         });
-                                                    </script>
+                                                    </script> -->
 
 
                                                 </div>

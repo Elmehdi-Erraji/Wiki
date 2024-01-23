@@ -185,7 +185,7 @@ class UserServices {
         $connection->beginTransaction(); // Begin a transaction
     
         try {
-            $updateUserQuery = "UPDATE users SET username=?, email=?, image=IF(?, image, image) WHERE id=?";
+            $updateUserQuery = "UPDATE users SET username=?, email=?, image =? WHERE id=?";
             $stmtUpdateUser = $connection->prepare($updateUserQuery);
     
             $successUpdateUser = $stmtUpdateUser->execute([$username, $email, $image, $userId]);
